@@ -1,0 +1,65 @@
+{
+  "gateway": [
+    {
+      "name": "higress-gateway-b6555fb79-jqq5z",
+      "uid": "1193727f-5b84-480a-8acc-b72f91455f29",
+      "created": "2026-10-03T17:35:09Z",
+      "containers": [
+        {
+          "image": "registry.local/higress/gateway:2.2.4",
+          "imageID": "docker://sha256:2ceb461141a20686462a698bfc1b48e35f3c220cf671af4585a5806ddaabfe56",
+          "restartCount": 2
+        }
+      ]
+    }
+  ],
+  "wasm_sha256": "cbb2518624d3c6560c649d6dcb53923102444ab23811ee9ba121f9114ecbc1fb",
+  "resources": [
+    {
+      "kind": "Deployment",
+      "name": "walmart-quota-portal",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "Service",
+      "name": "walmart-quota-portal",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "Ingress",
+      "name": "walmart-quota-portal-limited",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "Ingress",
+      "name": "walmart-quota-portal-main",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "WasmPlugin",
+      "name": "walmart-quota-portal-ai-quota-walmart",
+      "created": "2026-11-21T02:19:06Z"
+    },
+    {
+      "kind": "WasmPlugin",
+      "name": "walmart-quota-portal-ai-statistics",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "WasmPlugin",
+      "name": "walmart-quota-portal-ai-token-ratelimit",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "WasmPlugin",
+      "name": "walmart-quota-portal-key-auth",
+      "created": "2026-11-21T02:17:54Z"
+    },
+    {
+      "kind": "WasmPlugin",
+      "name": "walmart-quota-portal-transformer",
+      "created": "2026-11-21T02:17:54Z"
+    }
+  ],
+  "security_review_regressions": true
+}

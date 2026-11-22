@@ -1,0 +1,4472 @@
+{
+  "verified_at": "2026-11-22T06:23:12.811015+00:00",
+  "checks": [
+    {
+      "name": "Money policy enabled",
+      "passed": true,
+      "detail": {
+        "amount_unit": "micro_yuan",
+        "budget_policy": "personal_department_money",
+        "currency": "CNY",
+        "ok": true,
+        "period": "2026-11-09",
+        "period_end": "2026-11-23T00:00:00+08:00",
+        "period_start": "2026-11-09T00:00:00+08:00",
+        "prices": {
+          "demo-model": {
+            "input_price_micros": 2000000,
+            "output_price_micros": 8000000
+          },
+          "demo-model-pro": {
+            "input_price_micros": 10000000,
+            "output_price_micros": 40000000
+          }
+        },
+        "tiers": {
+          "L1": {
+            "models": [],
+            "quota": 100000000
+          },
+          "L2": {
+            "models": [],
+            "quota": 300000000
+          },
+          "L3": {
+            "models": [],
+            "quota": 1000000000
+          }
+        },
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "name": "Currency and integer unit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No API key denied",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Forged consumer cannot administer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Missing trusted user denied",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unconfigured user denied",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unconfigured addition cannot provision identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unconfigured temporary tier cannot provision identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Missing department cannot be inherited",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "App cannot change prices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign department finance-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign user money-personal-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign user money-inherit-a-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign user money-inherit-b-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Personal L1 overrides department L3",
+      "passed": true,
+      "detail": {
+        "app": "",
+        "balance": 100000000,
+        "base_quota": 100000000,
+        "base_tier": "L1",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 100000000,
+        "effective_dimension": "user",
+        "effective_limit": 100000000,
+        "effective_subject": "money-personal-4a4c381e",
+        "effective_tier": "L1",
+        "input_tokens": 0,
+        "limit": 100000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 100000000,
+        "quota_source": "personal",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-personal-4a4c381e",
+        "tier": "L1",
+        "usage": 0
+      }
+    },
+    {
+      "name": "Unassigned personal tier inherits department",
+      "passed": true,
+      "detail": {
+        "app": "",
+        "balance": 1000000000,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000000000,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 0,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 1000000000,
+        "quota_source": "department",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 0
+      }
+    },
+    {
+      "name": "Each inherited user has full independent budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Department has no shared balance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Priced model succeeds",
+      "passed": true,
+      "detail": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "name": "Application key stripped upstream",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Input/output prices charge exact amount",
+      "passed": true,
+      "detail": {
+        "app": "demo-app",
+        "balance": 999999820,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 180,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 999999820,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 10,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 20,
+        "period": "2026-11-09",
+        "quota": 999999820,
+        "quota_source": "department",
+        "requests": 1,
+        "spent": 180,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 30
+      }
+    },
+    {
+      "name": "Other member balance untouched",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Personal requester always own payer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Second model succeeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Different model rate changes charge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SSE request succeeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SSE charges once",
+      "passed": true,
+      "detail": {
+        "app": "demo-app",
+        "balance": 999998740,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 999998740,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 30,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 999998740,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 90
+      }
+    },
+    {
+      "name": "Unpriced model denied",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Missing price leaves balance intact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Add budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Repeat addition idempotent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Conflicting ticket rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Old period rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Department cannot receive pooled additions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign department finance-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Department change preserves existing initialized budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign user money-new-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "New member receives updated department template",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign user money-inherit-a-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Personal reassignment preserves spend and addon",
+      "passed": true,
+      "detail": {
+        "app": "demo-app",
+        "balance": 100122196,
+        "base_quota": 100000000,
+        "base_tier": "L1",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 100122196,
+        "effective_dimension": "user",
+        "effective_limit": 100123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L1",
+        "input_tokens": 30,
+        "limit": 100123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 100122196,
+        "quota_source": "personal",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L1",
+        "usage": 90
+      }
+    },
+    {
+      "name": "Assign user money-inherit-a-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Return to inheritance preserves spend/addon",
+      "passed": true,
+      "detail": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "name": "Refresh does not refill budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Zero personal balance can be configured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Exhaustion403 instead of department/app fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Other member still works after sibling exhaustion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Internal settlement route unavailable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reject forged field department",
+      "passed": true,
+      "detail": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: department",
+        "ok": false
+      }
+    },
+    {
+      "name": "Rejected field leaves ledger unchanged department",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reject forged field cost_micros",
+      "passed": true,
+      "detail": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: cost_micros",
+        "ok": false
+      }
+    },
+    {
+      "name": "Rejected field leaves ledger unchanged cost_micros",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reject forged field payer_dimension",
+      "passed": true,
+      "detail": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: payer_dimension",
+        "ok": false
+      }
+    },
+    {
+      "name": "Rejected field leaves ledger unchanged payer_dimension",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reject forged field period_start_unix",
+      "passed": true,
+      "detail": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: period_start_unix",
+        "ok": false
+      }
+    },
+    {
+      "name": "Rejected field leaves ledger unchanged period_start_unix",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Price configuration saved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sub-micro combined price request",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Combined rounding is one micro not two",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Explicitly free model allowed with budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Free usage counted with zero charge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Exhausted account still blocked on free model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reprice during in-flight request",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "In-flight model request completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "In-flight request retains admission prices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Next request uses changed price",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Prior consumption not repriced",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Negative price rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Invalid price leaves active prices intact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Assign user money-window-4a4c381e",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "First limited request",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Second limited request",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Token window remains429",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Money changes audited",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Redis outage fails closed503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Redis recovered",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": true,
+  "responses": [
+    {
+      "path": "/v1/chat/completions/quota/meta",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "amount_unit": "micro_yuan",
+        "budget_policy": "personal_department_money",
+        "currency": "CNY",
+        "ok": true,
+        "period": "2026-11-09",
+        "period_end": "2026-11-23T00:00:00+08:00",
+        "period_start": "2026-11-09T00:00:00+08:00",
+        "prices": {
+          "demo-model": {
+            "input_price_micros": 2000000,
+            "output_price_micros": 8000000
+          },
+          "demo-model-pro": {
+            "input_price_micros": 10000000,
+            "output_price_micros": 40000000
+          }
+        },
+        "tiers": {
+          "L1": {
+            "models": [],
+            "quota": 100000000
+          },
+          "L2": {
+            "models": [],
+            "quota": 300000000
+          },
+          "L3": {
+            "models": [],
+            "quota": 1000000000
+          }
+        },
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/meta",
+      "method": "GET",
+      "status": 401,
+      "body": ""
+    },
+    {
+      "path": "/v1/chat/completions/quota/meta",
+      "method": "GET",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.unauthorized",
+        "message": "Administrator required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 401,
+      "body": {
+        "error": "ai-quota-walmart.invalid_subject",
+        "message": "Trusted user required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.unconfigured",
+        "message": "Personal tier or valid department required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 1000000,
+          "base_quota": 0,
+          "base_tier": "inherit",
+          "cost_micros": 0,
+          "department": "",
+          "dimension": "user",
+          "effective_balance": 1000000,
+          "effective_dimension": "user",
+          "effective_limit": 1000000,
+          "effective_subject": "money-unconfigured-4a4c381e",
+          "effective_tier": "",
+          "input_tokens": 0,
+          "limit": 1000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 1000000,
+          "quota_source": "unconfigured",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-unconfigured-4a4c381e",
+          "tier": "",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.unconfigured",
+        "message": "Personal tier or valid department required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/tier",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 301000000,
+          "base_quota": 300000000,
+          "base_tier": "inherit",
+          "cost_micros": 0,
+          "department": "",
+          "dimension": "user",
+          "effective_balance": 301000000,
+          "effective_dimension": "user",
+          "effective_limit": 301000000,
+          "effective_subject": "money-unconfigured-4a4c381e",
+          "effective_tier": "L2",
+          "input_tokens": 0,
+          "limit": 301000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 301000000,
+          "quota_source": "unconfigured",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-unconfigured-4a4c381e",
+          "tier": "L2",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.unconfigured",
+        "message": "Personal tier or valid department required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_department",
+        "message": "Valid department required for inheritance",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/prices",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.unauthorized",
+        "message": "Administrator required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "dimension": "department",
+          "subject": "finance-4a4c381e",
+          "tier": "L3"
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 100000000,
+          "base_quota": 100000000,
+          "base_tier": "L1",
+          "cost_micros": 0,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 100000000,
+          "effective_dimension": "user",
+          "effective_limit": 100000000,
+          "effective_subject": "money-personal-4a4c381e",
+          "effective_tier": "L1",
+          "input_tokens": 0,
+          "limit": 100000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 100000000,
+          "quota_source": "personal",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-personal-4a4c381e",
+          "tier": "L1",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 1000000000,
+          "base_quota": 1000000000,
+          "base_tier": "inherit",
+          "cost_micros": 0,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 1000000000,
+          "effective_dimension": "user",
+          "effective_limit": 1000000000,
+          "effective_subject": "money-inherit-a-4a4c381e",
+          "effective_tier": "L3",
+          "input_tokens": 0,
+          "limit": 1000000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 1000000000,
+          "quota_source": "department",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-inherit-a-4a4c381e",
+          "tier": "L3",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 1000000000,
+          "base_quota": 1000000000,
+          "base_tier": "inherit",
+          "cost_micros": 0,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 1000000000,
+          "effective_dimension": "user",
+          "effective_limit": 1000000000,
+          "effective_subject": "money-inherit-b-4a4c381e",
+          "effective_tier": "L3",
+          "input_tokens": 0,
+          "limit": 1000000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 1000000000,
+          "quota_source": "department",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-inherit-b-4a4c381e",
+          "tier": "L3",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-personal-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "",
+        "balance": 100000000,
+        "base_quota": 100000000,
+        "base_tier": "L1",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 100000000,
+        "effective_dimension": "user",
+        "effective_limit": 100000000,
+        "effective_subject": "money-personal-4a4c381e",
+        "effective_tier": "L1",
+        "input_tokens": 0,
+        "limit": 100000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 100000000,
+        "quota_source": "personal",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-personal-4a4c381e",
+        "tier": "L1",
+        "usage": 0
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "",
+        "balance": 1000000000,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000000000,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 0,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 1000000000,
+        "quota_source": "department",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 0
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-b-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "",
+        "balance": 1000000000,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000000000,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-b-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 0,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 1000000000,
+        "quota_source": "department",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-inherit-b-4a4c381e",
+        "tier": "L3",
+        "usage": 0
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=department&subject=finance-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "dimension": "department",
+        "ok": true,
+        "subject": "finance-4a4c381e",
+        "tier": "L3"
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 999999820,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 180,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 999999820,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 10,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 20,
+        "period": "2026-11-09",
+        "quota": 999999820,
+        "quota_source": "department",
+        "requests": 1,
+        "spent": 180,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 30
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-b-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "",
+        "balance": 1000000000,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000000000,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-b-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 0,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 1000000000,
+        "quota_source": "department",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-inherit-b-4a4c381e",
+        "tier": "L3",
+        "usage": 0
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model-pro",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 999998920,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1080,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 999998920,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 20,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 40,
+        "period": "2026-11-09",
+        "quota": 999998920,
+        "quota_source": "department",
+        "requests": 2,
+        "spent": 1080,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 60
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": "data: {\"id\": \"mock-quota\", \"object\": \"chat.completion.chunk\", \"model\": \"demo-model\", \"choices\": [], \"usage\": {\"prompt_tokens\": 10, \"completion_tokens\": 20, \"total_tokens\": 30}}\n\ndata: [DONE]\n\n"
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 999998740,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 999998740,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 30,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 999998740,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.missing_price",
+        "message": "Model price not configured",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 999998740,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 999998740,
+        "effective_dimension": "user",
+        "effective_limit": 1000000000,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 30,
+        "limit": 1000000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 999998740,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "demo-app",
+          "balance": 1000122196,
+          "base_quota": 1000000000,
+          "base_tier": "inherit",
+          "cost_micros": 1260,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 1000122196,
+          "effective_dimension": "user",
+          "effective_limit": 1000123456,
+          "effective_subject": "money-inherit-a-4a4c381e",
+          "effective_tier": "L3",
+          "input_tokens": 30,
+          "limit": 1000123456,
+          "models": [],
+          "output_tokens": 60,
+          "period": "2026-11-09",
+          "quota": 1000122196,
+          "quota_source": "department",
+          "requests": 3,
+          "spent": 1260,
+          "subject": "money-inherit-a-4a4c381e",
+          "tier": "L3",
+          "usage": 90
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "demo-app",
+          "balance": 1000122196,
+          "base_quota": 1000000000,
+          "base_tier": "inherit",
+          "cost_micros": 1260,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 1000122196,
+          "effective_dimension": "user",
+          "effective_limit": 1000123456,
+          "effective_subject": "money-inherit-a-4a4c381e",
+          "effective_tier": "L3",
+          "input_tokens": 30,
+          "limit": 1000123456,
+          "models": [],
+          "output_tokens": 60,
+          "period": "2026-11-09",
+          "quota": 1000122196,
+          "quota_source": "department",
+          "requests": 3,
+          "spent": 1260,
+          "subject": "money-inherit-a-4a4c381e",
+          "tier": "L3",
+          "usage": 90
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 1000122196,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000122196,
+        "effective_dimension": "user",
+        "effective_limit": 1000123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 30,
+        "limit": 1000123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 1000122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 409,
+      "body": {
+        "error": "ai-quota-walmart.ticket_conflict",
+        "message": "Ticket already used with different request",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 409,
+      "body": {
+        "error": "ai-quota-walmart.period_conflict",
+        "message": "Current period required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_dimension",
+        "message": "User required",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 1000122196,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000122196,
+        "effective_dimension": "user",
+        "effective_limit": 1000123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 30,
+        "limit": 1000123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 1000122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "dimension": "department",
+          "subject": "finance-4a4c381e",
+          "tier": "L2"
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 1000122196,
+        "base_quota": 1000000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 1000122196,
+        "effective_dimension": "user",
+        "effective_limit": 1000123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L3",
+        "input_tokens": 30,
+        "limit": 1000123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 1000122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L3",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 300000000,
+          "base_quota": 300000000,
+          "base_tier": "inherit",
+          "cost_micros": 0,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 300000000,
+          "effective_dimension": "user",
+          "effective_limit": 300000000,
+          "effective_subject": "money-new-4a4c381e",
+          "effective_tier": "L2",
+          "input_tokens": 0,
+          "limit": 300000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 300000000,
+          "quota_source": "department",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-new-4a4c381e",
+          "tier": "L2",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-new-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "",
+        "balance": 300000000,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300000000,
+        "effective_dimension": "user",
+        "effective_limit": 300000000,
+        "effective_subject": "money-new-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 0,
+        "limit": 300000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 300000000,
+        "quota_source": "department",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-new-4a4c381e",
+        "tier": "L2",
+        "usage": 0
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "demo-app",
+          "balance": 100122196,
+          "base_quota": 100000000,
+          "base_tier": "L1",
+          "cost_micros": 1260,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 100122196,
+          "effective_dimension": "user",
+          "effective_limit": 100123456,
+          "effective_subject": "money-inherit-a-4a4c381e",
+          "effective_tier": "L1",
+          "input_tokens": 30,
+          "limit": 100123456,
+          "models": [],
+          "output_tokens": 60,
+          "period": "2026-11-09",
+          "quota": 100122196,
+          "quota_source": "personal",
+          "requests": 3,
+          "spent": 1260,
+          "subject": "money-inherit-a-4a4c381e",
+          "tier": "L1",
+          "usage": 90
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 100122196,
+        "base_quota": 100000000,
+        "base_tier": "L1",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 100122196,
+        "effective_dimension": "user",
+        "effective_limit": 100123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L1",
+        "input_tokens": 30,
+        "limit": 100123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 100122196,
+        "quota_source": "personal",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L1",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "demo-app",
+          "balance": 300122196,
+          "base_quota": 300000000,
+          "base_tier": "inherit",
+          "cost_micros": 1260,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 300122196,
+          "effective_dimension": "user",
+          "effective_limit": 300123456,
+          "effective_subject": "money-inherit-a-4a4c381e",
+          "effective_tier": "L2",
+          "input_tokens": 30,
+          "limit": 300123456,
+          "models": [],
+          "output_tokens": 60,
+          "period": "2026-11-09",
+          "quota": 300122196,
+          "quota_source": "department",
+          "requests": 3,
+          "spent": 1260,
+          "subject": "money-inherit-a-4a4c381e",
+          "tier": "L2",
+          "usage": 90
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/refresh",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "demo-app",
+          "balance": 300122196,
+          "base_quota": 300000000,
+          "base_tier": "inherit",
+          "cost_micros": 1260,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 300122196,
+          "effective_dimension": "user",
+          "effective_limit": 300123456,
+          "effective_subject": "money-inherit-a-4a4c381e",
+          "effective_tier": "L2",
+          "input_tokens": 30,
+          "limit": 300123456,
+          "models": [],
+          "output_tokens": 60,
+          "period": "2026-11-09",
+          "quota": 300122196,
+          "quota_source": "department",
+          "requests": 3,
+          "spent": 1260,
+          "subject": "money-inherit-a-4a4c381e",
+          "tier": "L2",
+          "usage": 90
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-personal-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "",
+        "balance": 100000000,
+        "base_quota": 100000000,
+        "base_tier": "L1",
+        "cost_micros": 0,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 100000000,
+        "effective_dimension": "user",
+        "effective_limit": 100000000,
+        "effective_subject": "money-personal-4a4c381e",
+        "effective_tier": "L1",
+        "input_tokens": 0,
+        "limit": 100000000,
+        "models": [],
+        "ok": true,
+        "output_tokens": 0,
+        "period": "2026-11-09",
+        "quota": 100000000,
+        "quota_source": "personal",
+        "requests": 0,
+        "spent": 0,
+        "subject": "money-personal-4a4c381e",
+        "tier": "L1",
+        "usage": 0
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 0,
+          "base_quota": 100000000,
+          "base_tier": "L1",
+          "cost_micros": 0,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 0,
+          "effective_dimension": "user",
+          "effective_limit": 0,
+          "effective_subject": "money-personal-4a4c381e",
+          "effective_tier": "L1",
+          "input_tokens": 0,
+          "limit": 0,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 0,
+          "quota_source": "personal",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-personal-4a4c381e",
+          "tier": "L1",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.noquota",
+        "message": "No quota left",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/settle",
+      "method": "POST",
+      "status": 405,
+      "body": {
+        "error": "ai-quota-walmart.method_not_allowed",
+        "message": "Unsupported method or administrative action",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: department",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: cost_micros",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: payer_dimension",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/delta",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_request",
+        "message": "unknown or reserved field: period_start_unix",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/prices",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "demo-model": {
+            "input_price_micros": 2000000,
+            "output_price_micros": 8000000
+          },
+          "demo-model-pro": {
+            "input_price_micros": 10000000,
+            "output_price_micros": 40000000
+          },
+          "free-model": {
+            "input_price_micros": 0,
+            "output_price_micros": 0
+          },
+          "rounding-model": {
+            "input_price_micros": 1,
+            "output_price_micros": 1
+          }
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122196,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1260,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122196,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 30,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 60,
+        "period": "2026-11-09",
+        "quota": 300122196,
+        "quota_source": "department",
+        "requests": 3,
+        "spent": 1260,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 90
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "rounding-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122195,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1261,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122195,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 40,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 80,
+        "period": "2026-11-09",
+        "quota": 300122195,
+        "quota_source": "department",
+        "requests": 4,
+        "spent": 1261,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 120
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "free-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122195,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1261,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122195,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 50,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 100,
+        "period": "2026-11-09",
+        "quota": 300122195,
+        "quota_source": "department",
+        "requests": 5,
+        "spent": 1261,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 150
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 403,
+      "body": {
+        "error": "ai-quota-walmart.noquota",
+        "message": "No quota left",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122195,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1261,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122195,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 50,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 100,
+        "period": "2026-11-09",
+        "quota": 300122195,
+        "quota_source": "department",
+        "requests": 5,
+        "spent": 1261,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 150
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/prices",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "demo-model": {
+            "input_price_micros": 6000000,
+            "output_price_micros": 12000000
+          },
+          "demo-model-pro": {
+            "input_price_micros": 10000000,
+            "output_price_micros": 40000000
+          },
+          "free-model": {
+            "input_price_micros": 0,
+            "output_price_micros": 0
+          },
+          "rounding-model": {
+            "input_price_micros": 1,
+            "output_price_micros": 1
+          }
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300122015,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1441,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300122015,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 60,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 120,
+        "period": "2026-11-09",
+        "quota": 300122015,
+        "quota_source": "department",
+        "requests": 6,
+        "spent": 1441,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 180
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/?dimension=user&subject=money-inherit-a-4a4c381e",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "app": "demo-app",
+        "balance": 300121715,
+        "base_quota": 300000000,
+        "base_tier": "inherit",
+        "cost_micros": 1741,
+        "department": "finance-4a4c381e",
+        "dimension": "user",
+        "effective_balance": 300121715,
+        "effective_dimension": "user",
+        "effective_limit": 300123456,
+        "effective_subject": "money-inherit-a-4a4c381e",
+        "effective_tier": "L2",
+        "input_tokens": 70,
+        "limit": 300123456,
+        "models": [],
+        "ok": true,
+        "output_tokens": 140,
+        "period": "2026-11-09",
+        "quota": 300121715,
+        "quota_source": "department",
+        "requests": 7,
+        "spent": 1741,
+        "subject": "money-inherit-a-4a4c381e",
+        "tier": "L2",
+        "usage": 210
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/prices",
+      "method": "POST",
+      "status": 400,
+      "body": {
+        "error": "ai-quota-walmart.invalid_prices",
+        "message": "Invalid model prices",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/prices",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "ok": true,
+        "period": "2026-11-09",
+        "prices": {
+          "demo-model": {
+            "input_price_micros": 6000000,
+            "output_price_micros": 12000000
+          },
+          "demo-model-pro": {
+            "input_price_micros": 10000000,
+            "output_price_micros": 40000000
+          },
+          "free-model": {
+            "input_price_micros": 0,
+            "output_price_micros": 0
+          },
+          "rounding-model": {
+            "input_price_micros": 1,
+            "output_price_micros": 1
+          }
+        }
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/prices",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "demo-model": {
+            "input_price_micros": 2000000,
+            "output_price_micros": 8000000
+          },
+          "demo-model-pro": {
+            "input_price_micros": 10000000,
+            "output_price_micros": 40000000
+          }
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/v1/chat/completions/quota/assign",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "account": {
+          "app": "",
+          "balance": 300000000,
+          "base_quota": 300000000,
+          "base_tier": "inherit",
+          "cost_micros": 0,
+          "department": "finance-4a4c381e",
+          "dimension": "user",
+          "effective_balance": 300000000,
+          "effective_dimension": "user",
+          "effective_limit": 300000000,
+          "effective_subject": "money-window-4a4c381e",
+          "effective_tier": "L2",
+          "input_tokens": 0,
+          "limit": 300000000,
+          "models": [],
+          "output_tokens": 0,
+          "period": "2026-11-09",
+          "quota": 300000000,
+          "quota_source": "department",
+          "requests": 0,
+          "spent": 0,
+          "subject": "money-window-4a4c381e",
+          "tier": "L2",
+          "usage": 0
+        },
+        "ok": true,
+        "period": "2026-11-09",
+        "tiers_scope": "future_initialization"
+      }
+    },
+    {
+      "path": "/limited/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/limited/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    },
+    {
+      "path": "/limited/v1/chat/completions",
+      "method": "POST",
+      "status": 429,
+      "body": "Too many requests"
+    },
+    {
+      "path": "/v1/chat/completions/quota/audit?limit=100",
+      "method": "GET",
+      "status": 200,
+      "body": {
+        "ok": true,
+        "records": [
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 300000000,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 300000000,
+              "effective_dimension": "user",
+              "effective_limit": 300000000,
+              "effective_subject": "money-window-4a4c381e",
+              "effective_tier": "L2",
+              "input_tokens": 0,
+              "limit": 300000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 300000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-window-4a4c381e",
+              "tier": "L2",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-window-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:15Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-window-4a4c381e",
+            "ticket_id": "verify-5ec053cad8914519a08f6a3629949ddf"
+          },
+          {
+            "action": "prices",
+            "after": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              }
+            },
+            "before": {
+              "demo-model": {
+                "input_price_micros": 6000000,
+                "output_price_micros": 12000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "occurred_at": "2026-11-22T06:23:14Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "ticket_id": "verify-17db4b9069074e2eb3e93a640d4c7b3e"
+          },
+          {
+            "action": "prices",
+            "after": {
+              "demo-model": {
+                "input_price_micros": 6000000,
+                "output_price_micros": 12000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "before": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "occurred_at": "2026-11-22T06:23:14Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "ticket_id": "verify-fc40cb24b4554b1ebf1d7d4dfa685e0a"
+          },
+          {
+            "action": "prices",
+            "after": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "before": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              }
+            },
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "ticket_id": "verify-cc6c1bbc56f84e02abcc36ff6b909db9"
+          },
+          {
+            "action": "delta",
+            "after": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 0,
+              "effective_dimension": "user",
+              "effective_limit": 0,
+              "effective_subject": "money-personal-4a4c381e",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-4a4c381e",
+              "tier": "L1",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 100000000,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 100000000,
+              "effective_dimension": "user",
+              "effective_limit": 100000000,
+              "effective_subject": "money-personal-4a4c381e",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 100000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 100000000,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-4a4c381e",
+              "tier": "L1",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-personal-4a4c381e",
+            "ticket_id": "verify-7865fac664ab415fbf74c8de6455135a"
+          },
+          {
+            "action": "refresh",
+            "after": {
+              "app": "demo-app",
+              "balance": 300122196,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 300122196,
+              "effective_dimension": "user",
+              "effective_limit": 300123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L2",
+              "input_tokens": 30,
+              "limit": 300123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 300122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L2",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 300122196,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 300122196,
+              "effective_dimension": "user",
+              "effective_limit": 300123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L2",
+              "input_tokens": 30,
+              "limit": 300123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 300122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L2",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-4a4c381e",
+            "ticket_id": "verify-e771ed4cfc2f4d9c9bc66eebc1f3e1e5"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "demo-app",
+              "balance": 300122196,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 300122196,
+              "effective_dimension": "user",
+              "effective_limit": 300123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L2",
+              "input_tokens": 30,
+              "limit": 300123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 300122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L2",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 100122196,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 100122196,
+              "effective_dimension": "user",
+              "effective_limit": 100123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L1",
+              "input_tokens": 30,
+              "limit": 100123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 100122196,
+              "quota_source": "personal",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L1",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-4a4c381e",
+            "ticket_id": "verify-127b48ad10264e999010c5381ad0ce0a"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "demo-app",
+              "balance": 100122196,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 100122196,
+              "effective_dimension": "user",
+              "effective_limit": 100123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L1",
+              "input_tokens": 30,
+              "limit": 100123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 100122196,
+              "quota_source": "personal",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L1",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 1000122196,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 1000122196,
+              "effective_dimension": "user",
+              "effective_limit": 1000123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L3",
+              "input_tokens": 30,
+              "limit": 1000123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 1000122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L3",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-4a4c381e",
+            "ticket_id": "verify-46d42a7ebfae44b6a9c70f6e0ea1aae4"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 300000000,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 300000000,
+              "effective_dimension": "user",
+              "effective_limit": 300000000,
+              "effective_subject": "money-new-4a4c381e",
+              "effective_tier": "L2",
+              "input_tokens": 0,
+              "limit": 300000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 300000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-new-4a4c381e",
+              "tier": "L2",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-new-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-new-4a4c381e",
+            "ticket_id": "verify-667c948f14924f529cf843101c76cd35"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "dimension": "department",
+              "subject": "finance-4a4c381e",
+              "tier": "L2"
+            },
+            "before": {
+              "tier": "L3"
+            },
+            "dimension": "department",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "finance-4a4c381e",
+            "ticket_id": "verify-1e3cf2439c48482393b5bb3bbb272640"
+          },
+          {
+            "action": "delta",
+            "after": {
+              "app": "demo-app",
+              "balance": 1000122196,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 1000122196,
+              "effective_dimension": "user",
+              "effective_limit": 1000123456,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L3",
+              "input_tokens": 30,
+              "limit": 1000123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 1000122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L3",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 999998740,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L3",
+              "input_tokens": 30,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 999998740,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L3",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-4a4c381e",
+            "ticket_id": "money-delta-4a4c381e"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 1000000000,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "money-inherit-b-4a4c381e",
+              "effective_tier": "L3",
+              "input_tokens": 0,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-b-4a4c381e",
+              "tier": "L3",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-b-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-b-4a4c381e",
+            "ticket_id": "verify-6215c02e506e4010967f9d7751710557"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 1000000000,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "money-inherit-a-4a4c381e",
+              "effective_tier": "L3",
+              "input_tokens": 0,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "L3",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-a-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:13Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-4a4c381e",
+            "ticket_id": "verify-9425cc4ae8ba464e8ef4af975687a691"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 100000000,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "finance-4a4c381e",
+              "dimension": "user",
+              "effective_balance": 100000000,
+              "effective_dimension": "user",
+              "effective_limit": 100000000,
+              "effective_subject": "money-personal-4a4c381e",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 100000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 100000000,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-4a4c381e",
+              "tier": "L1",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:12Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-personal-4a4c381e",
+            "ticket_id": "verify-b80601fbf54345d19fb9e56b91052d6e"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "dimension": "department",
+              "subject": "finance-4a4c381e",
+              "tier": "L3"
+            },
+            "before": {},
+            "dimension": "department",
+            "occurred_at": "2026-11-22T06:23:12Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "finance-4a4c381e",
+            "ticket_id": "verify-ad66c81dc5854b08a293ea797d403f42"
+          },
+          {
+            "action": "tier",
+            "after": {
+              "app": "",
+              "balance": 301000000,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "effective_balance": 301000000,
+              "effective_dimension": "user",
+              "effective_limit": 301000000,
+              "effective_subject": "money-unconfigured-4a4c381e",
+              "effective_tier": "L2",
+              "input_tokens": 0,
+              "limit": 301000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 301000000,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-unconfigured-4a4c381e",
+              "tier": "L2",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 1000000,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "effective_balance": 1000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000,
+              "effective_subject": "money-unconfigured-4a4c381e",
+              "effective_tier": "",
+              "input_tokens": 0,
+              "limit": 1000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-unconfigured-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:12Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-unconfigured-4a4c381e",
+            "ticket_id": "verify-731e1d24f25a4dbd98b4b254e6220538"
+          },
+          {
+            "action": "delta",
+            "after": {
+              "app": "",
+              "balance": 1000000,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "effective_balance": 1000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000,
+              "effective_subject": "money-unconfigured-4a4c381e",
+              "effective_tier": "",
+              "input_tokens": 0,
+              "limit": 1000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-unconfigured-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-unconfigured-4a4c381e",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-22T06:23:12Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-unconfigured-4a4c381e",
+            "ticket_id": "verify-8690caac100b4d93ae3cb30d3772995d"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "second-app",
+              "balance": 1000000000,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "产品部",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "user-carol",
+              "effective_tier": "L3",
+              "input_tokens": 0,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "user-carol",
+              "tier": "L3",
+              "usage": 0
+            },
+            "before": {
+              "app": "second-app",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "user-carol",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:27:18Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "user-carol",
+            "ticket_id": "verify-b36eb070b2b84e0ea533d6cd07645698"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "demo-app",
+              "balance": 300000000,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "研发部",
+              "dimension": "user",
+              "effective_balance": 300000000,
+              "effective_dimension": "user",
+              "effective_limit": 300000000,
+              "effective_subject": "user-bob",
+              "effective_tier": "L2",
+              "input_tokens": 0,
+              "limit": 300000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 300000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "user-bob",
+              "tier": "L2",
+              "usage": 0
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "user-bob",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:27:18Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "user-bob",
+            "ticket_id": "verify-3f6e247908fa4345b1549fd422875d4a"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "demo-app",
+              "balance": 100000000,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "研发部",
+              "dimension": "user",
+              "effective_balance": 100000000,
+              "effective_dimension": "user",
+              "effective_limit": 100000000,
+              "effective_subject": "user-alice",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 100000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 100000000,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "user-alice",
+              "tier": "L1",
+              "usage": 0
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "user-alice",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:27:18Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "user-alice",
+            "ticket_id": "verify-d275d2131b804bc6b92d1767c34b3e2a"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "dimension": "department",
+              "subject": "产品部",
+              "tier": "L3"
+            },
+            "before": {},
+            "dimension": "department",
+            "occurred_at": "2026-11-21T16:27:18Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "产品部",
+            "ticket_id": "verify-6743b3cab7dc49adb5f99273913b1eb9"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "dimension": "department",
+              "subject": "研发部",
+              "tier": "L2"
+            },
+            "before": {},
+            "dimension": "department",
+            "occurred_at": "2026-11-21T16:27:18Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "研发部",
+            "ticket_id": "verify-79e5717386d445c6a9f533a02aa19dd5"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 300000000,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 300000000,
+              "effective_dimension": "user",
+              "effective_limit": 300000000,
+              "effective_subject": "money-window-5abdffb5",
+              "effective_tier": "L2",
+              "input_tokens": 0,
+              "limit": 300000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 300000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-window-5abdffb5",
+              "tier": "L2",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-window-5abdffb5",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:54Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-window-5abdffb5",
+            "ticket_id": "verify-b54417227b6d49e1959b096fb7cb5b89"
+          },
+          {
+            "action": "prices",
+            "after": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              }
+            },
+            "before": {
+              "demo-model": {
+                "input_price_micros": 6000000,
+                "output_price_micros": 12000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "occurred_at": "2026-11-21T16:26:54Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "ticket_id": "verify-7d957485ecd74cb191e4ac9291fbdb96"
+          },
+          {
+            "action": "prices",
+            "after": {
+              "demo-model": {
+                "input_price_micros": 6000000,
+                "output_price_micros": 12000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "before": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "occurred_at": "2026-11-21T16:26:54Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "ticket_id": "verify-0aae2750627f4e2ebd7c9fbe1cb43a03"
+          },
+          {
+            "action": "prices",
+            "after": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              },
+              "free-model": {
+                "input_price_micros": 0,
+                "output_price_micros": 0
+              },
+              "rounding-model": {
+                "input_price_micros": 1,
+                "output_price_micros": 1
+              }
+            },
+            "before": {
+              "demo-model": {
+                "input_price_micros": 2000000,
+                "output_price_micros": 8000000
+              },
+              "demo-model-pro": {
+                "input_price_micros": 10000000,
+                "output_price_micros": 40000000
+              }
+            },
+            "occurred_at": "2026-11-21T16:26:53Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "ticket_id": "verify-6b1f6394ec394122985c42c051697a21"
+          },
+          {
+            "action": "delta",
+            "after": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 0,
+              "effective_dimension": "user",
+              "effective_limit": 0,
+              "effective_subject": "money-personal-5abdffb5",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-5abdffb5",
+              "tier": "L1",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 100000000,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 100000000,
+              "effective_dimension": "user",
+              "effective_limit": 100000000,
+              "effective_subject": "money-personal-5abdffb5",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 100000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 100000000,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-5abdffb5",
+              "tier": "L1",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:53Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-personal-5abdffb5",
+            "ticket_id": "verify-9c3b3d65daa3475c887080d5acccedfd"
+          },
+          {
+            "action": "refresh",
+            "after": {
+              "app": "demo-app",
+              "balance": 300122196,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 300122196,
+              "effective_dimension": "user",
+              "effective_limit": 300123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L2",
+              "input_tokens": 30,
+              "limit": 300123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 300122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L2",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 300122196,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 300122196,
+              "effective_dimension": "user",
+              "effective_limit": 300123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L2",
+              "input_tokens": 30,
+              "limit": 300123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 300122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L2",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-5abdffb5",
+            "ticket_id": "verify-6ab7560e62064223b69f233873c155e5"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "demo-app",
+              "balance": 300122196,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 300122196,
+              "effective_dimension": "user",
+              "effective_limit": 300123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L2",
+              "input_tokens": 30,
+              "limit": 300123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 300122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L2",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 100122196,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 100122196,
+              "effective_dimension": "user",
+              "effective_limit": 100123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L1",
+              "input_tokens": 30,
+              "limit": 100123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 100122196,
+              "quota_source": "personal",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L1",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-5abdffb5",
+            "ticket_id": "verify-b1712d6939f9447aaa9d0e988da8fd47"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "demo-app",
+              "balance": 100122196,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 100122196,
+              "effective_dimension": "user",
+              "effective_limit": 100123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L1",
+              "input_tokens": 30,
+              "limit": 100123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 100122196,
+              "quota_source": "personal",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L1",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 1000122196,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 1000122196,
+              "effective_dimension": "user",
+              "effective_limit": 1000123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L3",
+              "input_tokens": 30,
+              "limit": 1000123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 1000122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L3",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-5abdffb5",
+            "ticket_id": "verify-27239867c2f44735a79fdd6169c048da"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 300000000,
+              "base_quota": 300000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 300000000,
+              "effective_dimension": "user",
+              "effective_limit": 300000000,
+              "effective_subject": "money-new-5abdffb5",
+              "effective_tier": "L2",
+              "input_tokens": 0,
+              "limit": 300000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 300000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-new-5abdffb5",
+              "tier": "L2",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-new-5abdffb5",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-new-5abdffb5",
+            "ticket_id": "verify-7d5d9aa2368d47efa0ce05bfd55de3f9"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "dimension": "department",
+              "subject": "finance-5abdffb5",
+              "tier": "L2"
+            },
+            "before": {
+              "tier": "L3"
+            },
+            "dimension": "department",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "finance-5abdffb5",
+            "ticket_id": "verify-18b3a2f43bbb4bab88f180a042a19d6a"
+          },
+          {
+            "action": "delta",
+            "after": {
+              "app": "demo-app",
+              "balance": 1000122196,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 1000122196,
+              "effective_dimension": "user",
+              "effective_limit": 1000123456,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L3",
+              "input_tokens": 30,
+              "limit": 1000123456,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 1000122196,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L3",
+              "usage": 90
+            },
+            "before": {
+              "app": "demo-app",
+              "balance": 999998740,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 1260,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L3",
+              "input_tokens": 30,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 60,
+              "period": "2026-11-09",
+              "quota": 999998740,
+              "quota_source": "department",
+              "requests": 3,
+              "spent": 1260,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L3",
+              "usage": 90
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-5abdffb5",
+            "ticket_id": "money-delta-5abdffb5"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 1000000000,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "money-inherit-b-5abdffb5",
+              "effective_tier": "L3",
+              "input_tokens": 0,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-b-5abdffb5",
+              "tier": "L3",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-b-5abdffb5",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-b-5abdffb5",
+            "ticket_id": "verify-8736d44d0b66428e92d6b5530689a6fc"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 1000000000,
+              "base_quota": 1000000000,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 1000000000,
+              "effective_dimension": "user",
+              "effective_limit": 1000000000,
+              "effective_subject": "money-inherit-a-5abdffb5",
+              "effective_tier": "L3",
+              "input_tokens": 0,
+              "limit": 1000000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 1000000000,
+              "quota_source": "department",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "L3",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-inherit-a-5abdffb5",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-inherit-a-5abdffb5",
+            "ticket_id": "verify-bba9ca6708b248d48d3dd43ac5572fe4"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "app": "",
+              "balance": 100000000,
+              "base_quota": 100000000,
+              "base_tier": "L1",
+              "cost_micros": 0,
+              "department": "finance-5abdffb5",
+              "dimension": "user",
+              "effective_balance": 100000000,
+              "effective_dimension": "user",
+              "effective_limit": 100000000,
+              "effective_subject": "money-personal-5abdffb5",
+              "effective_tier": "L1",
+              "input_tokens": 0,
+              "limit": 100000000,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 100000000,
+              "quota_source": "personal",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-5abdffb5",
+              "tier": "L1",
+              "usage": 0
+            },
+            "before": {
+              "app": "",
+              "balance": 0,
+              "base_quota": 0,
+              "base_tier": "inherit",
+              "cost_micros": 0,
+              "department": "",
+              "dimension": "user",
+              "input_tokens": 0,
+              "limit": 0,
+              "models": [],
+              "output_tokens": 0,
+              "period": "2026-11-09",
+              "quota": 0,
+              "quota_source": "unconfigured",
+              "requests": 0,
+              "spent": 0,
+              "subject": "money-personal-5abdffb5",
+              "tier": "",
+              "usage": 0
+            },
+            "dimension": "user",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "money-personal-5abdffb5",
+            "ticket_id": "verify-5624b3b961d1412a88b56dd5e1df1f6d"
+          },
+          {
+            "action": "assign",
+            "after": {
+              "dimension": "department",
+              "subject": "finance-5abdffb5",
+              "tier": "L3"
+            },
+            "before": {},
+            "dimension": "department",
+            "occurred_at": "2026-11-21T16:26:52Z",
+            "operator": "quota-admin",
+            "period": "2026-11-09",
+            "subject": "finance-5abdffb5",
+            "ticket_id": "verify-1db58f5e53a74a7f9925a83c1f6b06cf"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 503,
+      "body": {
+        "error": "ai-quota-walmart.redis_unavailable",
+        "message": "Quota storage unavailable",
+        "ok": false
+      }
+    },
+    {
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "status": 200,
+      "body": {
+        "id": "mock-quota",
+        "object": "chat.completion",
+        "model": "demo-model",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Local mock response"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 10,
+          "completion_tokens": 20,
+          "total_tokens": 30
+        }
+      }
+    }
+  ],
+  "wasm_sha256": "f3250443a2debce5f6f0775ed2ead3309934aa4bea470b2b4b754f6fb56066dc"
+}

@@ -1,0 +1,11 @@
+npm notice run higress-quota-portal@0.1.0 test:browser
+npm notice run node tests/browser-money.mjs
+PASS Anonymous prices denied
+PASS Real gateway monetary policy active
+PASS Department template created using browser
+PASS New user defaults to department inheritance
+PASS Exact monetary delta persisted
+PASS Department source remains personal balance
+PASS Model price editor saves real gateway configuration
+PASS Mobile has no document overflow
+PASS No JavaScript errors

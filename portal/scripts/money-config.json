@@ -1,0 +1,34 @@
+{
+  "dimensions": [
+    "user",
+    "app"
+  ],
+  "admin_consumer": "quota-admin",
+  "admin_path": "/quota",
+  "redis_key_prefix": "wmt_portal_money_v2:",
+  "tiers": {
+    "L1": {
+      "quota": 100000000,
+      "models": []
+    },
+    "L2": {
+      "quota": 300000000,
+      "models": []
+    },
+    "L3": {
+      "quota": 1000000000,
+      "models": []
+    }
+  },
+  "budget_policy": "personal_department_money",
+  "prices": {
+    "demo-model": {
+      "input_price_micros": 2000000,
+      "output_price_micros": 8000000
+    },
+    "demo-model-pro": {
+      "input_price_micros": 10000000,
+      "output_price_micros": 40000000
+    }
+  }
+}

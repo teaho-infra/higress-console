@@ -1,0 +1,9 @@
+PASS CSV template downloads with Chinese headers
+PASS Invalid file rejected before writes
+PASS Preview has no server writes
+PASS Partial failure reported accurately
+PASS Retry sends only failed row with unchanged ticket
+PASS Real plugin persisted personal
+PASS Real plugin persisted department
+PASS Download contains per-row audit tickets
+PASS Import mobile has no page overflow

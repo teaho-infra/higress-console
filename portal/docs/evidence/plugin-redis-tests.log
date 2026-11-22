@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "checks": [
+    "64 bit quota",
+    "lower user inherits app",
+    "equal tier user wins",
+    "settle once dual usage",
+    "noquota stable code",
+    "refresh preserves spending",
+    "idempotent delta",
+    "conflicting ticket",
+    "downgrade rejected",
+    "new period resets temporary tier addon usage",
+    "late response original period",
+    "templates future only",
+    "association snapshot",
+    "bounded accounts",
+    "upgrade preserves spent",
+    "model denied",
+    "model allowed",
+    "model wildcard",
+    "malformed app rejected before mutation",
+    "upgrade cap validation",
+    "assign negative limit rejected",
+    "own payer effective fields"
+  ],
+  "prefix": "isolated-test:15f19fac-2142-4955-b7a2-a5962f07b147:"
+}

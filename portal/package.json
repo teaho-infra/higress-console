@@ -1,0 +1,25 @@
+{
+  "name": "higress-quota-portal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 18891",
+    "build": "vite build",
+    "start": "node --env-file=.env server/index.mjs",
+    "test": "node --test tests/server.test.mjs tests/import.test.mjs",
+    "test:browser": "node tests/browser-money.mjs",
+    "test:browser:legacy": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "@playwright/test": "^1.56.0"
+  }
+}

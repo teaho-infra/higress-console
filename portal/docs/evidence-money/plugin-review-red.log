@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/money_integration_test.py", line 61, in <module>
+    check('unconfigured addon cannot authorize',run('check',subject='unconfigured',model='model')['status']==403)
+KeyError: 'status'

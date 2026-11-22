@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-22T06:28:32.615Z",
+  "checks": [
+    {
+      "name": "Anonymous prices denied",
+      "passed": true
+    },
+    {
+      "name": "Real gateway monetary policy active",
+      "passed": true
+    },
+    {
+      "name": "Department template created using browser",
+      "passed": true
+    },
+    {
+      "name": "New user defaults to department inheritance",
+      "passed": true
+    },
+    {
+      "name": "Exact monetary delta persisted",
+      "passed": true
+    },
+    {
+      "name": "Department source remains personal balance",
+      "passed": true
+    },
+    {
+      "name": "Model price editor saves real gateway configuration",
+      "passed": true
+    },
+    {
+      "name": "Mobile has no document overflow",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

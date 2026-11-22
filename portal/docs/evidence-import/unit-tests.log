@@ -1,0 +1,28 @@
+npm notice run higress-quota-portal@0.1.0 test
+npm notice run node --test tests/server.test.mjs tests/import.test.mjs
+✔ CSV preserves string IDs, BOM, reordered headers and quoted commas (3.243916ms)
+✔ reject duplicate users, unknown department, invalid tier and missing inheritance department (1.497676ms)
+✔ reject malformed CSV, extra columns, wrong headers and overlong identifiers (2.473078ms)
+✔ empty files and over 200 rows rejected before any calls (3.668761ms)
+✔ failed retries use identical ticket and body; successful rows never resent (3.437656ms)
+✔ authentication or period conflicts stop later rows, retaining partial result (3.142296ms)
+✔ unauthenticated management reads are denied without calling gateway (56.910201ms)
+✔ incorrect password denied (23.708445ms)
+✔ cross-origin login denied (11.866934ms)
+✔ authenticated read injects server-only admin key and fixed host (47.148003ms)
+✔ mutation needs CSRF and same origin (36.298376ms)
+✔ supported mutation preserves payload; operator cannot be spoofed (19.463147ms)
+✔ arbitrary upstream paths and unsupported methods blocked (18.750905ms)
+✔ logout invalidates session (10.578642ms)
+✔ fails startup without a strong password or admin key (1.322164ms)
+✔ prices GET and POST preserve server authentication and CSRF boundary (46.62552ms)
+✔ department queries and personal inherit assignments pass unchanged (22.132059ms)
+✔ money conversion uses exact decimal arithmetic and never rounds silently (1.152799ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 550.114969

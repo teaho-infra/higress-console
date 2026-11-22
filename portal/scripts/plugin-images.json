@@ -1,0 +1,18 @@
+{
+  "transformer": {
+    "image": "higress-registry.cn-hangzhou.cr.aliyuncs.com/plugins/transformer:2.0.3",
+    "manifest_digest": "sha256:74474c68d29625b537908bfb5ad8a5f200616498a8957ae063ae9987bb540a52"
+  },
+  "key-auth": {
+    "image": "higress-registry.cn-hangzhou.cr.aliyuncs.com/plugins/key-auth:2.0.0",
+    "manifest_digest": "sha256:c9cddda9b7dc36b8260afd10d12a089556a070dba28b0b17691e18efc0ca545c"
+  },
+  "ai-statistics": {
+    "image": "higress-registry.cn-hangzhou.cr.aliyuncs.com/plugins/ai-statistics:2.0.3",
+    "manifest_digest": "sha256:c8c16f5295e14509710af9ea962ac7ebefe3b7f995bd6fd33885bbe2761c1d56"
+  },
+  "ai-token-ratelimit": {
+    "image": "higress-registry.cn-hangzhou.cr.aliyuncs.com/plugins/ai-token-ratelimit:2.0.3",
+    "manifest_digest": "sha256:9276a7d4cbd7afef668fd1aaf41212e663fd7fa98661c619398a7f2fb2736679"
+  }
+}

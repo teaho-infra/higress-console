@@ -1,0 +1,5 @@
+--- FAIL: TestMoneyTotalTokenRange (0.00s)
+    money_test.go:81: combined usage exceeds safe range
+FAIL
+exit status 1
+FAIL	github.com/alibaba/higress/plugins/wasm-go/extensions/ai-quota-walmart	0.005s

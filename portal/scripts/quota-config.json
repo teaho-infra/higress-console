@@ -1,0 +1,29 @@
+{
+  "dimensions": [
+    "user",
+    "app"
+  ],
+  "admin_consumer": "quota-admin",
+  "admin_path": "/quota",
+  "redis_key_prefix": "wmt_portal_demo:",
+  "tiers": {
+    "L1": {
+      "quota": 330000000,
+      "models": [
+        "demo-model"
+      ]
+    },
+    "L2": {
+      "quota": 1000000000,
+      "models": [
+        "demo-model"
+      ]
+    },
+    "L3": {
+      "quota": 2300000000,
+      "models": [
+        "demo-model"
+      ]
+    }
+  }
+}

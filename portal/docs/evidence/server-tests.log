@@ -1,0 +1,19 @@
+npm notice run higress-quota-portal@0.1.0 test
+npm notice run node --test tests/server.test.mjs
+✔ unauthenticated management reads are denied without calling gateway (42.086974ms)
+✔ incorrect password denied (23.161476ms)
+✔ cross-origin login denied (8.787926ms)
+✔ authenticated read injects server-only admin key and fixed host (24.371157ms)
+✔ mutation needs CSRF and same origin (21.118568ms)
+✔ supported mutation preserves payload; operator cannot be spoofed (15.234784ms)
+✔ arbitrary upstream paths and unsupported methods blocked (33.070312ms)
+✔ logout invalidates session (18.887782ms)
+✔ fails startup without a strong password or admin key (4.110121ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 365.688109

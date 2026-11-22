@@ -1,0 +1,14 @@
+npm notice run higress-quota-portal@0.1.0 test:browser
+npm notice run node tests/browser.mjs
+PASS Anonymous management API denied
+PASS Login and real gateway accounts loaded
+PASS Account search filters by subject
+PASS Browser grant increased actual balance by 120
+PASS Actual audit contains browser ticket
+PASS Tier template editor saved through gateway
+PASS Unrestricted model lists render and save without crash
+PASS Quota-only edit accepts default unrestricted lists
+PASS Original template restored after browser regression
+PASS Mobile page has no horizontal document overflow
+PASS No browser JavaScript errors
+PASS Logout returns to login

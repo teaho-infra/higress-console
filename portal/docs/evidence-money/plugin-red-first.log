@@ -1,0 +1,11 @@
+Initial test-first run (captured tool output before implementation):
+GOTOOLCHAIN=go1.26.0 GOMODCACHE=/tmp/walmart-quota-gomod go test ./...
+FAIL github.com/alibaba/higress/plugins/wasm-go/extensions/ai-quota-walmart [build failed]
+./money_test.go:5:9: undefined: moneyCost
+./money_test.go:7:10: undefined: moneyCost
+./money_test.go:10:202: undefined: validatePrices
+./money_test.go:11:5: undefined: validatePrices
+
+Subsequent arithmetic fixture correction: expected 9999989999999 was wrong;
+ceil((9999999999999*999999+1)/1000000) = 9999990000000.
+Full green suite and Redis results recorded separately.

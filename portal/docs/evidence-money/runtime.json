@@ -1,0 +1,22 @@
+{
+  "verified_at": "2026-11-22T06:29:37.997086+00:00",
+  "wasm_sha256": "f3250443a2debce5f6f0775ed2ead3309934aa4bea470b2b4b754f6fb56066dc",
+  "budget_policy": "personal_department_money",
+  "redis_key_prefix": "wmt_portal_money_v2:",
+  "portal_url": "http://127.0.0.1:18890/",
+  "plugin_url": "http://walmart-quota-portal.higress-system.svc.cluster.local:8090/quota-f3250443a2debce5f6f0775ed2ead3309934aa4bea470b2b4b754f6fb56066dc.wasm",
+  "gateway": [
+    {
+      "name": "higress-gateway-b6555fb79-jqq5z",
+      "uid": "1193727f-5b84-480a-8acc-b72f91455f29",
+      "created": "2026-10-03T17:35:09Z",
+      "images": [
+        "registry.local/higress/gateway:2.2.4"
+      ]
+    }
+  ],
+  "checks": {
+    "gateway": 75,
+    "browser": 9
+  }
+}

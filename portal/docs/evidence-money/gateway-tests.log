@@ -1,0 +1,75 @@
+PASS Money policy enabled
+PASS Currency and integer unit
+PASS No API key denied
+PASS Forged consumer cannot administer
+PASS Missing trusted user denied
+PASS Unconfigured user denied
+PASS Unconfigured addition cannot provision identity
+PASS Unconfigured temporary tier cannot provision identity
+PASS Missing department cannot be inherited
+PASS App cannot change prices
+PASS Assign department finance-4a4c381e
+PASS Assign user money-personal-4a4c381e
+PASS Assign user money-inherit-a-4a4c381e
+PASS Assign user money-inherit-b-4a4c381e
+PASS Personal L1 overrides department L3
+PASS Unassigned personal tier inherits department
+PASS Each inherited user has full independent budget
+PASS Department has no shared balance
+PASS Priced model succeeds
+PASS Application key stripped upstream
+PASS Input/output prices charge exact amount
+PASS Other member balance untouched
+PASS Personal requester always own payer
+PASS Second model succeeds
+PASS Different model rate changes charge
+PASS SSE request succeeds
+PASS SSE charges once
+PASS Unpriced model denied
+PASS Missing price leaves balance intact
+PASS Add budget
+PASS Repeat addition idempotent
+PASS Conflicting ticket rejected
+PASS Old period rejected
+PASS Department cannot receive pooled additions
+PASS Assign department finance-4a4c381e
+PASS Department change preserves existing initialized budget
+PASS Assign user money-new-4a4c381e
+PASS New member receives updated department template
+PASS Assign user money-inherit-a-4a4c381e
+PASS Personal reassignment preserves spend and addon
+PASS Assign user money-inherit-a-4a4c381e
+PASS Return to inheritance preserves spend/addon
+PASS Refresh does not refill budget
+PASS Zero personal balance can be configured
+PASS Exhaustion403 instead of department/app fallback
+PASS Other member still works after sibling exhaustion
+PASS Internal settlement route unavailable
+PASS Reject forged field department
+PASS Rejected field leaves ledger unchanged department
+PASS Reject forged field cost_micros
+PASS Rejected field leaves ledger unchanged cost_micros
+PASS Reject forged field payer_dimension
+PASS Rejected field leaves ledger unchanged payer_dimension
+PASS Reject forged field period_start_unix
+PASS Rejected field leaves ledger unchanged period_start_unix
+PASS Price configuration saved
+PASS Sub-micro combined price request
+PASS Combined rounding is one micro not two
+PASS Explicitly free model allowed with budget
+PASS Free usage counted with zero charge
+PASS Exhausted account still blocked on free model
+PASS Reprice during in-flight request
+PASS In-flight model request completed
+PASS In-flight request retains admission prices
+PASS Next request uses changed price
+PASS Prior consumption not repriced
+PASS Negative price rejected
+PASS Invalid price leaves active prices intact
+PASS Assign user money-window-4a4c381e
+PASS First limited request
+PASS Second limited request
+PASS Token window remains429
+PASS Money changes audited
+PASS Redis outage fails closed503
+PASS Redis recovered

@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-22T11:17:00.599Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "CSV template downloads with Chinese headers",
+      "passed": true
+    },
+    {
+      "name": "Invalid file rejected before writes",
+      "passed": true
+    },
+    {
+      "name": "Preview has no server writes",
+      "passed": true
+    },
+    {
+      "name": "Partial failure reported accurately",
+      "passed": true
+    },
+    {
+      "name": "Retry sends only failed row with unchanged ticket",
+      "passed": true
+    },
+    {
+      "name": "Real plugin persisted personal",
+      "passed": true
+    },
+    {
+      "name": "Real plugin persisted department",
+      "passed": true
+    },
+    {
+      "name": "Download contains per-row audit tickets",
+      "passed": true
+    },
+    {
+      "name": "Import mobile has no page overflow",
+      "passed": true
+    }
+  ]
+}

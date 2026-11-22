@@ -1,0 +1,16 @@
+secret/walmart-quota-portal configured
+configmap/walmart-quota-portal configured
+deployment.apps/walmart-quota-portal unchanged
+service/walmart-quota-portal unchanged
+ingress.networking.k8s.io/walmart-quota-portal-main unchanged
+ingress.networking.k8s.io/walmart-quota-portal-limited unchanged
+wasmplugin.extensions.higress.io/walmart-quota-portal-transformer unchanged
+wasmplugin.extensions.higress.io/walmart-quota-portal-key-auth unchanged
+wasmplugin.extensions.higress.io/walmart-quota-portal-ai-statistics unchanged
+wasmplugin.extensions.higress.io/walmart-quota-portal-ai-token-ratelimit unchanged
+
+wasmplugin.extensions.higress.io/walmart-quota-portal-ai-quota-walmart configured
+
+wasmplugin.extensions.higress.io/walmart-quota-portal-ai-quota-walmart configured
+
+wasmplugin.extensions.higress.io/walmart-quota-portal-ai-quota-walmart configured

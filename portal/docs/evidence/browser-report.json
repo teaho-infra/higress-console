@@ -1,0 +1,59 @@
+{
+  "at": "2026-11-21T02:28:08.622Z",
+  "checks": [
+    {
+      "name": "Anonymous management API denied",
+      "passed": true
+    },
+    {
+      "name": "Login and real gateway accounts loaded",
+      "passed": true
+    },
+    {
+      "name": "Account search filters by subject",
+      "passed": true
+    },
+    {
+      "name": "Browser grant increased actual balance by 120",
+      "passed": true
+    },
+    {
+      "name": "Actual audit contains browser ticket",
+      "passed": true
+    },
+    {
+      "name": "Tier template editor saved through gateway",
+      "passed": true
+    },
+    {
+      "name": "Unrestricted model lists render and save without crash",
+      "passed": true
+    },
+    {
+      "name": "Quota-only edit accepts default unrestricted lists",
+      "passed": true
+    },
+    {
+      "name": "Original template restored after browser regression",
+      "passed": true
+    },
+    {
+      "name": "Mobile page has no horizontal document overflow",
+      "passed": true,
+      "detail": {
+        "body": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "name": "No browser JavaScript errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Logout returns to login",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

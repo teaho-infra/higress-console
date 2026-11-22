@@ -1,0 +1,8 @@
+go: downloading github.com/tetratelabs/wazero v1.7.2
+# github.com/alibaba/higress/plugins/wasm-go/extensions/ai-quota-walmart [github.com/alibaba/higress/plugins/wasm-go/extensions/ai-quota-walmart.test]
+./ledger_test.go:42:57: undefined: publicAction
+./ledger_test.go:43:134: undefined: validateAdminFields
+./ledger_test.go:44:6: undefined: publicAction
+./ledger_test.go:45:5: undefined: validateAdminFields
+FAIL	github.com/alibaba/higress/plugins/wasm-go/extensions/ai-quota-walmart [build failed]
+FAIL
