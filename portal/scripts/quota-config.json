@@ -8,22 +8,12 @@
   "redis_key_prefix": "wmt_portal_demo:",
   "tiers": {
     "L1": {
-      "quota": 330000000,
-      "models": [
-        "demo-model"
-      ]
+      "quota": 500000000,
+      "models": []
     },
     "L2": {
-      "quota": 1000000000,
-      "models": [
-        "demo-model"
-      ]
-    },
-    "L3": {
-      "quota": 2300000000,
-      "models": [
-        "demo-model"
-      ]
+      "quota": 1500000000,
+      "models": []
     }
   }
 }

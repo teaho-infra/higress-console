@@ -145,14 +145,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
-					<execution>
-						<id>copy-resources-static</id>
-						<phase>generate-resources</phase>
+				<execution>
+					<id>copy-resources-static</id>
+					<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
+							<outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+							<overwrite>true</overwrite>
 							<resources>
 								<resource>
 									<directory>../../frontend/build</directory>
@@ -205,6 +206,17 @@
 	</build>
 
 	<profiles>
+		<!-- Isolated quota extension; no changes to upstream controllers or SDK. -->
+		<profile>
+			<id>walmart-quota</id>
+			<dependencies>
+				<dependency>
+					<groupId>io.higress.custom</groupId>
+					<artifactId>walmart-quota</artifactId>
+					<version>0.0.1-SNAPSHOT</version>
+				</dependency>
+			</dependencies>
+		</profile>
 		<profile>
 			<id>api-docs</id>
 			<build>

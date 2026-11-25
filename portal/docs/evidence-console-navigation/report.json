@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "用量总览: menu, URL, selected state, refresh, no nested shell",
+    "用户与应用: menu, URL, selected state, refresh, no nested shell",
+    "部门模板: menu, URL, selected state, refresh, no nested shell",
+    "档位配置: menu, URL, selected state, refresh, no nested shell",
+    "模型单价: menu, URL, selected state, refresh, no nested shell",
+    "变更审计: menu, URL, selected state, refresh, no nested shell",
+    "Browser back/forward",
+    "Batch import retained",
+    "Mobile layout",
+    "No browser errors"
+  ],
+  "errors": []
+}

@@ -1,3 +1,4 @@
+import walmartQuotaMenu from '@/custom/walmart-quota/menu';
 import {
   DashboardOutlined,
   DeploymentUnitOutlined,
@@ -15,6 +16,7 @@ export default {
   route: {
     path: '/',
     routes: [
+      walmartQuotaMenu,
       {
         name: 'init.title',
         path: '/init',

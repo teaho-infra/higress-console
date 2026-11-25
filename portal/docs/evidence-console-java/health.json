@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-25T03:07:25.045Z",
+  "results": [
+    {
+      "base": "http://127.0.0.1:18001",
+      "page": 200,
+      "quotaLogin": 200,
+      "quotaMeta": 200,
+      "policy": "personal_department_money"
+    },
+    {
+      "base": "http://127.0.0.1:18890",
+      "page": 200,
+      "quotaLogin": 200,
+      "quotaMeta": 200,
+      "policy": "personal_department_money"
+    },
+    {
+      "pods": [
+        {
+          "name": "walmart-quota-portal-6c6655b897-n6vdh",
+          "uid": "32ee3630-3b60-4ef9-a027-ac5b10f1634f",
+          "ready": true,
+          "restarts": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "walmart-quota-portal-java-fixtures-5bb6d8ddd4-gnk5m",
+          "uid": "9653ec42-b3f3-4575-8171-9955cfd90963",
+          "ready": true,
+          "restarts": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

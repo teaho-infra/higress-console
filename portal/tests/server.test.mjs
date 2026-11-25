@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import http from "node:http";
-import { createPortal } from "../server/app.mjs";
+import { createPortal } from "./java-server.mjs";
 let portal,
   upstream,
   url,
@@ -104,7 +104,7 @@ test("mutation needs CSRF and same origin", async () => {
   ]) {
     assert.equal(
       (
-        await fetch(url + "/api/quota/tier", {
+        await fetch(url + "/api/quota/cycle", {
           method: "POST",
           headers: { "Content-Type": "application/json", ...headers },
           body: "{}",
@@ -116,7 +116,7 @@ test("mutation needs CSRF and same origin", async () => {
 });
 test("supported mutation preserves payload; operator cannot be spoofed", async () => {
   await login();
-  const r = await fetch(url + "/api/quota/tier", {
+  const r = await fetch(url + "/api/quota/cycle", {
     method: "POST",
     headers: {
       cookie: session.cookie,
@@ -125,9 +125,7 @@ test("supported mutation preserves payload; operator cannot be spoofed", async (
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      dimension: "user",
-      subject: "alice",
-      tier: "L2",
+      days: 7,
       period: "2026-11-09",
       ticket_id: "T1",
       operator: "spoofed",
@@ -138,6 +136,7 @@ test("supported mutation preserves payload; operator cannot be spoofed", async (
     Object.hasOwn(JSON.parse(received.at(-1).body), "operator"),
     false
   );
+  assert.equal(received.at(-1).path, "/v1/chat/completions/quota/cycle");
 });
 test("arbitrary upstream paths and unsupported methods blocked", async () => {
   await login();

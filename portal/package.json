@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 18891",
     "build": "vite build",
-    "start": "node --env-file=.env server/index.mjs",
-    "test": "node --test tests/server.test.mjs tests/import.test.mjs",
+    "start": "bash scripts/start-java",
+    "test": "mvn -q -f ../backend/walmart-quota/pom.xml package && node --test tests/server.test.mjs tests/import.test.mjs",
     "test:browser": "node tests/browser-money.mjs",
     "test:browser:legacy": "node tests/browser.mjs"
   },

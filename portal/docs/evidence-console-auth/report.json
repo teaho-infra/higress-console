@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Anonymous quota API and session rejected",
+    "Console login directly opens quota without password or Portal cookie",
+    "Authenticated quota reads work",
+    "CSRF and Origin still enforced",
+    "Independent quota login and logout disabled in Console",
+    "CSRF session alone cannot bypass Console authentication"
+  ]
+}

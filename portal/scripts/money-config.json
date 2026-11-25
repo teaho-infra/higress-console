@@ -8,15 +8,11 @@
   "redis_key_prefix": "wmt_portal_money_v2:",
   "tiers": {
     "L1": {
-      "quota": 100000000,
+      "quota": 500000000,
       "models": []
     },
     "L2": {
-      "quota": 300000000,
-      "models": []
-    },
-    "L3": {
-      "quota": 1000000000,
+      "quota": 1500000000,
       "models": []
     }
   },

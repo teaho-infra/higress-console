@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-25",
+  "javaApi": {
+    "passed": 18,
+    "failed": 0
+  },
+  "javaTools": {
+    "passed": 10,
+    "failed": 0
+  },
+  "httpAndCsvContract": {
+    "passed": 18,
+    "failed": 0
+  },
+  "consoleBrowser": {
+    "passed": 10,
+    "failed": 0
+  },
+  "consoleImport": {
+    "passed": 10,
+    "failed": 0
+  },
+  "moneyGateway": {
+    "passed": 108,
+    "ok": true
+  },
+  "gatewayWasmSha256": "f3250443a2debce5f6f0775ed2ead3309934aa4bea470b2b4b754f6fb56066dc",
+  "review": "Independent final read-only review: no concrete integration blockers"
+}

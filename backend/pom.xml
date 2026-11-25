@@ -316,6 +316,11 @@
 	</build>
 
 	<profiles>
+		<!-- Walmart customization: omit this profile for an upstream-only build. -->
+		<profile>
+			<id>walmart-quota</id>
+			<modules><module>walmart-quota</module></modules>
+		</profile>
 		<profile>
 			<id>license</id>
 			<properties>
