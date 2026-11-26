@@ -17,7 +17,7 @@ public final class QuotaTools {
 
     QuotaTools(Path root) {
         this.root = root.toAbsolutePath().normalize();
-        out = this.root.resolve(".debug/cluster");
+        out = this.root.resolve(".walmart-quota/.debug/cluster");
     }
 
     static ObjectNode obj(Object... kv) {
@@ -67,7 +67,9 @@ public final class QuotaTools {
             if (!c.path(key).isTextual() || c.path(key).asText().isEmpty())
                 throw new IOException("Invalid private credentials field: " + key);
         save(file, c);
-        Path env = root.resolve(".env");
+        Path env = root.resolve(".walmart-quota/.env");
+        Files.createDirectories(env.getParent());
+        Files.setPosixFilePermissions(env.getParent(), PosixFilePermissions.fromString("rwx------"));
         // Preserve existing private environment overrides and secrets across prepares.
         if (!Files.exists(env))
             save(env, "PORTAL_PASSWORD=" + c.path("portal").asText() + "\nGATEWAY_ADMIN_KEY=" + c.path("admin").asText()
@@ -118,11 +120,11 @@ public final class QuotaTools {
     public static void main(String[] args) throws Exception {
         if (args.length == 0) {
             System.out.println(
-                    "Commands: prepare, install --wasm FILE, migrate-fixtures --wasm FILE, mock, static --directory DIR, seed-money, seed-legacy, verify-money, verify-gateway. Common: --root portal. Deployment applies only with --apply; verification requires --allow-mutations.");
+                    "Commands: prepare, install --wasm FILE, migrate-fixtures --wasm FILE, mock, static --directory DIR, seed-money, seed-legacy, verify-money, verify-gateway. Common: --root REPO_ROOT. Deployment applies only with --apply; verification requires --allow-mutations.");
             return;
         }
         Map<String, String> o = options(args);
-        QuotaTools t = new QuotaTools(Paths.get(o.getOrDefault("--root", "portal")));
+        QuotaTools t = new QuotaTools(Paths.get(o.getOrDefault("--root", ".")));
         switch (args[0]) {
         case "check-artifact":
             java.net.HttpURLConnection connection = (java.net.HttpURLConnection) new java.net.URL(required(o, "--url"))
@@ -155,7 +157,7 @@ public final class QuotaTools {
             break;
         case "install":
             new Deployment(t).install(Paths.get(required(o, "--wasm")), o.containsKey("--config")
-                    ? Paths.get(o.get("--config")) : t.root.resolve("scripts/money-config.json"),
+                    ? Paths.get(o.get("--config")) : t.root.resolve("backend/walmart-quota-tools/config/money-config.json"),
                     o.containsKey("--apply"));
             break;
         case "mock":

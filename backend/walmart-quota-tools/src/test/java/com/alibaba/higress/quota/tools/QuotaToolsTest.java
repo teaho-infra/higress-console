@@ -16,13 +16,19 @@ class QuotaToolsTest {
     @TempDir
     Path root;
 
+    @Test
+    void localStateLivesOutsideRemovedPortalDirectory() {
+        QuotaTools t = new QuotaTools(root);
+        assertEquals(root.resolve(".walmart-quota/.debug/cluster").toAbsolutePath(), t.out);
+    }
+
     QuotaTools setup() throws Exception {
-        Files.createDirectories(root.resolve("scripts"));
-        Path scripts = Paths.get("../../portal/scripts").toAbsolutePath();
+        Files.createDirectories(root.resolve("backend/walmart-quota-tools/config"));
+        Path scripts = Paths.get("config").toAbsolutePath();
         if (!Files.exists(scripts))
-            scripts = Paths.get("portal/scripts").toAbsolutePath();
+            scripts = Paths.get("backend/walmart-quota-tools/config").toAbsolutePath();
         for (String f : new String[] { "money-config.json", "plugin-images.json" })
-            Files.copy(scripts.resolve(f), root.resolve("scripts/" + f));
+            Files.copy(scripts.resolve(f), root.resolve("backend/walmart-quota-tools/config/" + f));
         return new QuotaTools(root);
     }
 
@@ -31,18 +37,18 @@ class QuotaToolsTest {
         QuotaTools t = setup();
         Path wasm = root.resolve("plugin.wasm");
         Files.write(wasm, bytes("fixture"));
-        new Deployment(t).install(wasm, root.resolve("scripts/money-config.json"), false);
+        new Deployment(t).install(wasm, root.resolve("backend/walmart-quota-tools/config/money-config.json"), false);
         JsonNode manifest = JSON.readTree(t.out.resolve("custom.private.json").toFile()),
                 cfg = manifest.path("spec").path("matchRules").path(0).path("config");
         assertEquals(750, manifest.path("spec").path("priority").asInt());
         assertEquals("wmt_portal_money_v2:", cfg.path("redis_key_prefix").asText());
         assertEquals(arr("user", "app"), cfg.path("dimensions"));
         assertFalse(cfg.path("redis").path("password").asText().isEmpty());
-        assertEquals(PosixFilePermissions.fromString("rw-------"), Files.getPosixFilePermissions(root.resolve(".env")));
+        assertEquals(PosixFilePermissions.fromString("rw-------"), Files.getPosixFilePermissions(root.resolve(".walmart-quota/.env")));
         ObjectNode credentials = t.credentials();
-        save(root.resolve(".env"), "PORTAL_PORT=19999\n");
+        save(root.resolve(".walmart-quota/.env"), "PORTAL_PORT=19999\n");
         assertEquals(credentials, t.credentials());
-        assertEquals("PORTAL_PORT=19999\n", new String(Files.readAllBytes(root.resolve(".env")), "UTF-8"));
+        assertEquals("PORTAL_PORT=19999\n", new String(Files.readAllBytes(root.resolve(".walmart-quota/.env")), "UTF-8"));
         assertEquals(PosixFilePermissions.fromString("rwx------"), Files.getPosixFilePermissions(t.out));
     }
 
@@ -59,12 +65,12 @@ class QuotaToolsTest {
                             .toString();
         });
         assertThrows(IllegalStateException.class,
-                () -> d.install(wasm, root.resolve("scripts/money-config.json"), true));
+                () -> d.install(wasm, root.resolve("backend/walmart-quota-tools/config/money-config.json"), true));
         assertTrue(calls.isEmpty());
         assertFalse(Files.exists(t.out.resolve("credentials.json")));
         t.credentials();
         assertThrows(IllegalStateException.class,
-                () -> d.install(wasm, root.resolve("scripts/money-config.json"), true));
+                () -> d.install(wasm, root.resolve("backend/walmart-quota-tools/config/money-config.json"), true));
         assertEquals(1, calls.size());
         assertTrue(calls.get(0).startsWith("get secret "));
         assertFalse(Files.exists(t.out.resolve("custom.private.json")));
@@ -135,7 +141,7 @@ class QuotaToolsTest {
             mutations.add(args[0]);
             return "";
         });
-        d.install(wasm, root.resolve("scripts/money-config.json"), true);
+        d.install(wasm, root.resolve("backend/walmart-quota-tools/config/money-config.json"), true);
         JsonNode spec = JSON.readTree(t.out.resolve("custom.private.json").toFile()).path("spec");
         assertTrue(spec.path("url").asText().contains(PREFIX + "-java-fixtures."));
         assertEquals("walmart-quota-redis.dns",

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/../.."
+jar=backend/walmart-quota/target/walmart-quota-0.0.1-SNAPSHOT-standalone.jar
+if [[ ! -f "$jar" ]]; then
+  mvn -q -f backend/walmart-quota/pom.xml package
+fi
+exec java -jar "$jar" '--spring.config.import=optional:file:.walmart-quota/.env[.properties]' "$@"

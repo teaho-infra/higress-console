@@ -35,7 +35,6 @@ public class QuotaApplication {
         defaults.put("walmart.quota.enabled", "true");
         defaults.put("server.port", "${PORTAL_PORT:18890}");
         defaults.put("server.address", "${PORTAL_BIND:127.0.0.1}");
-        defaults.put("spring.web.resources.static-locations", "file:./dist/");
         app.setDefaultProperties(defaults);
         app.run(args);
     }

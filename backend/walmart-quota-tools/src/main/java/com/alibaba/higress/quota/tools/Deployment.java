@@ -153,7 +153,7 @@ final class Deployment {
                                     arr(obj("path", i == 0 ? "/v1/chat/completions" : "/limited/v1/chat/completions",
                                             "pathType", "Prefix", "backend",
                                             obj("service", obj("name", PREFIX, "port", obj("number", 8080)))))))))));
-        JsonNode images = JSON.readTree(t.root.resolve("scripts/plugin-images.json").toFile());
+        JsonNode images = JSON.readTree(t.root.resolve("backend/walmart-quota-tools/config/plugin-images.json").toFile());
         plugin(items, images, "transformer", "AUTHN", 410, obj("reroute", false, "reqRules",
                 arr(obj("operate", "remove", "headers", arr(obj("key", "x-mse-consumer"))))), routes, null);
         plugin(items, images, "key-auth", "AUTHN", 310, obj("allow", arr("demo-app", "second-app", "quota-admin")),

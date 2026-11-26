@@ -8,7 +8,7 @@
 
 只需登录 Console，额度页面复用 Console 会话，不再要求独立额度密码，也不显示退出额度登录按钮。个人预算、部门兜底、模型价格、审计、CSV 批量导入均保留。
 
-`http://127.0.0.1:18890/` 保留为兼容入口，使用相同 React 源码和 Java 后端。旧 Node 服务已停止。
+`18890` 可启动独立 Java API 用于调试；页面统一从 Console 访问。旧 Node 服务与独立 Vite 页面已移除。
 
 ## 代码区隔
 
@@ -25,8 +25,8 @@
 | `QuotaGateway` | 固定网关地址和管理 Key，10 秒总超时，不跟随重定向 |
 | `QuotaApplication` | 独立兼容入口启动类，不参与 Console 扫描 |
 | `backend/walmart-quota-tools/` | Java 部署、迁移、模拟模型、Wasm 文件服务、初始化与验收 CLI |
-| `portal/src/` | 指向定制前端的兼容适配，不维护第二份页面实现 |
-| `portal/tests/`、`portal/docs/` | 浏览器测试及脱敏记录 |
+| `frontend/tests/walmart-quota/` | CSV 导入单元测试 |
+| `docs/walmart-quota/` | 历史调试文档与脱敏证据 |
 
 原有文件的接入改动只有三处：
 
@@ -59,7 +59,7 @@ mvn -f backend/pom.xml -P walmart-quota \
 
 浏览器打开“档位配置”编辑框时报 `Cannot read properties of undefined (reading 'quota')`。检查正在返回的 `/js/9722-ef6c968f3f8329f2be57.js`，发现它仍循环渲染 L1/L2/L3，而运行数据已只有 L1/L2。根因是旧 `src/main/resources/static` 资源进入 JAR，Maven 又按目标文件时间戳跳过了新 `index.html`。
 
-`backend/console/pom.xml` 现于 `prepare-package` 将 `frontend/build` 强制复制到 `target/classes/static`；清除本地生成的旧静态目录后重新打包。新 JAR 只含 `9722-5b51d2c22c3ff74e14d1.js`，入口指向 `main-53b3b9e3741a51b86ff1.js`。部署镜像 `higress-console/walmart-quota:20261125-no-l3-fix` 后，服务 `/assets-manifest.json` 指向新脚本；该脚本没有 L3。`CONSOLE_TEST_URL=http://127.0.0.1:18001 node portal/tests/browser-console-migration.mjs` 验证编辑框仅显示 L1/L2、无页面错误，HTTP 页面返回 200。
+`backend/console/pom.xml` 现于 `prepare-package` 将 `frontend/build` 强制复制到 `target/classes/static`；清除本地生成的旧静态目录后重新打包。2026-11-25 部署镜像 `higress-console/walmart-quota:20261125-no-l3-fix` 时验证了编辑框仅显示 L1/L2、无页面错误，HTTP 页面返回 200；当时的浏览器脚本随独立 Portal 测试目录移除。
 
 ### 2026-11-25：预算结算周期
 
@@ -73,7 +73,7 @@ Higress 插件改动：`dimensional.go` 增加管理员动作校验；`money_led
 
 ### 2026-11-25：重置周期可设置启止日
 
-改动文件：Higress `plugins/wasm-go/extensions/ai-quota-walmart/{dimensional.go,money_ledger.lua,cycle_integration_test.py,README.md}`；Console `frontend/src/custom/walmart-quota/index.jsx`、`portal/tests/browser-console-migration.mjs`、本文。`/reset` 新增可选的 `start_date`、`end_date`；Console 页面提交这两个日期，接口和 Redis 均拒绝缺项、过期或未来区间。审计保留实际边界，旧账本不删除。无需改动 Java API 透传代码。
+改动文件：Higress `plugins/wasm-go/extensions/ai-quota-walmart/{dimensional.go,money_ledger.lua,cycle_integration_test.py,README.md}`；Console `frontend/src/custom/walmart-quota/index.jsx`、当时的浏览器测试和本文。`/reset` 新增可选的 `start_date`、`end_date`；Console 页面提交这两个日期，接口和 Redis 均拒绝缺项、过期或未来区间。审计保留实际边界，旧账本不删除。无需改动 Java API 透传代码。
 
 调试命令与结果：
 
@@ -90,12 +90,12 @@ docker stop walmart-cycle-test-redis
 cd /home/teaho/IdeaProjects/teaho-infra/higress-console
 npm --prefix frontend run build                            # PASS
 mvn -q -f backend/pom.xml -P walmart-quota -DskipTests -Dcheckstyle.skip=true -Dpmd.skip=true -Dgpg.skip=true -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dskip.npm=true -Dskip.npx=true -Dskip.installnodenpm=true -Dlombok.delombok.skip=true clean package
-node --test portal/tests/server.test.mjs                    # 12/12 PASS
-portal/scripts/quota-tools install --wasm /home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/main.wasm --apply
+node --test frontend/tests/walmart-quota/import.test.mjs   # 当前 CSV 测试
+backend/walmart-quota-tools/quota-tools install --wasm /home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/main.wasm --apply
 (cd backend && minikube -p higress-dev image build -t higress-console/walmart-quota:20261125-cycle-dates -f walmart-quota/Console.Dockerfile .)
 kubectl --context higress-dev -n higress-system set image deployment/higress-console higress-console=higress-console/walmart-quota:20261125-cycle-dates
 kubectl --context higress-dev -n higress-system rollout status deployment/higress-console --timeout=120s
-CONSOLE_TEST_URL=http://127.0.0.1:18001 node portal/tests/browser-console-migration.mjs # PASS
+# 当时的浏览器脚本已随独立 Portal 移除；历史截图和结果保存在本目录 evidence。
 ```
 
 部署核查：Console `higress-console/walmart-quota:20261125-cycle-dates` 为 1/1，`/walmart-quota/tiers` 返回 HTTP 200；WasmPlugin URL 含上述 `a77530...` 摘要。真实网关 `/meta` 只读检查成功，当前周期 ID 为 `r1:1795597886`，当前及下期均为 14 天。本次未对真实预算执行 `/reset`。
@@ -137,7 +137,7 @@ Redis 独立注册为 `McpBridge/default` 中的 `walmart-quota-redis` DNS 服�
 
 ```bash
 # 已有集群迁移；无 --apply 时仅生成清单与备份。
-portal/scripts/quota-tools migrate-fixtures \
+backend/walmart-quota-tools/quota-tools migrate-fixtures \
   --wasm /绝对路径/ai-quota-walmart/plugin.wasm --apply
 ```
 
@@ -158,16 +158,15 @@ portal/scripts/quota-tools migrate-fixtures \
 调试中修复：严格拒绝尾随无效 JSON；保留 URL 查询归一化；恢复独立入口的浏览器安全头；安装时缺少/不匹配凭据直接拒绝；迁移后通过独立 DNS 服务源恢复 Redis 集群发现。
 
 ```bash
-cd portal
-npm test
-node tests/browser-console-java.mjs --allow-mutations
-node tests/browser-console-import.mjs --allow-mutations
-scripts/quota-tools verify-money --allow-mutations
+cd /home/teaho/IdeaProjects/teaho-infra/higress-console
+mvn -f backend/walmart-quota/pom.xml test
+node --test frontend/tests/walmart-quota/import.test.mjs
+backend/walmart-quota-tools/quota-tools verify-money --allow-mutations
 ```
 
-后三条会创建测试账户/审计记录；金额验收还会临时改价并恢复、暂停演示 Redis 验证故障恢复。应逐条执行，不要与正常业务并行。没有自动重新初始化旧用户。
+最后一条会创建测试账户/审计记录，临时改价并恢复、暂停演示 Redis 验证故障恢复。不要与正常业务并行。没有自动重新初始化旧用户。
 
-证据：`evidence-console-java/`、`evidence-money/gateway-report.json`。原始日志与备份在忽略提交的 `portal/.debug/java-migration/` 和 `portal/.debug/cluster/fixture-migration-*`，其中可能含私密配置，不要提交。
+证据：`evidence-console-java/`、`evidence-money/gateway-report.json`。原始日志与备份在忽略提交的 `.walmart-quota/.debug/java-migration/` 和 `.walmart-quota/.debug/cluster/fixture-migration-*`，其中可能含私密配置，不要提交。
 
 ## Console 统一登录（2026-11-25）
 
@@ -175,4 +174,12 @@ scripts/quota-tools verify-money --allow-mutations
 - `QuotaApi.java` 在 Console 模式取消独立密码登录和退出，匿名接口仍返回 401；保留 Origin 与 CSRF 校验。CSRF 会话本身不授予访问权限。
 - `QuotaSettings.java` 在 Console 模式不再要求 `PORTAL_PASSWORD`，独立运行仍要求。
 - 前端 `index.jsx` 移除 Console 内的额度退出按钮和密码表单；会话失效时引导回 Console 登录。
-- 验证：`cd portal && node tests/browser-console-auth.mjs`；报告见 `evidence-console-auth/`。
+- 历史浏览器验证报告见 `evidence-console-auth/`；原脚本已随独立 Portal 测试目录移除。
+
+## 2026-11-26：移除 Portal 后重新打包启动
+
+在 Console 仓库根目录执行 `npm --prefix frontend run build`、`mvn -f backend/walmart-quota/pom.xml test`、`mvn -f backend/walmart-quota-tools/pom.xml test`、`node --test frontend/tests/walmart-quota/import.test.mjs`，均通过。随后以 `-P walmart-quota` 和上述构建参数执行 `mvn ... clean package`，确保 JAR 不含旧静态资源。
+
+使用 `backend/walmart-quota/Console.Dockerfile` 在 Minikube 构建镜像 `higress-console/walmart-quota:20261126-no-portal`，通过 `kubectl set image deployment/higress-console` 更新；`kubectl rollout status` 成功，Deployment 为 1/1，Pod 为 Running 且重启次数 0。未修改 Redis、网关路由或配额插件。
+
+HTTP 验证：Console 登录返回 201；六个 `/walmart-quota/*` 页面均返回 200；登录后 `/api/quota/meta` 返回 `personal_department_money`，档位仅 L1/L2。浏览器逐页确认标题可见、无嵌入 iframe、无页面异常，档位编辑框无 L3。

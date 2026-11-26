@@ -1,3 +1,5 @@
+> 历史调试记录：独立 `portal/` 已移除，当前操作命令以 [README](README.md) 和 [Java 工具指南](java-tools.md) 为准。
+
 # Higress 分档额度与 Portal 实施计划
 
 来源：飞书《Token限额-Higress实现方案》，document_id EPyrdQFmAon34jxHrnMcJbIYn7g，revision 15。用户已要求实现和调试首版，本次直接在指定仓库执行，不发布远端。

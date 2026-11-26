@@ -1,11 +1,11 @@
 <!-- Portal deployment/verification commands migrated to Java; historical external plugin Python tests below are unchanged. -->
-# Higress 个人金额预算 Portal
+# Higress Console 个人金额预算
 
 当前版本：**个人配置优先，部门档位兜底，每人独立预算，按模型金额计费**。新增 `ai-quota-walmart` WASM 插件，无需修改网关镜像。
 
-主入口：[Console → Walmart 额度管理](http://127.0.0.1:18001/walmart-quota)。页面已接入 Console，后端为独立 Spring Boot 模块，部署调试工具为 Java。Console 集成页面复用 Console 登录，无需额度管理员密码。仅独立 Portal 兼容入口使用 `.env` 的 `PORTAL_PASSWORD`。
+主入口：[Console → Walmart 额度管理](http://127.0.0.1:18001/walmart-quota)。页面、API 和 Java 部署工具分别位于 `frontend/src/custom/walmart-quota`、`backend/walmart-quota`、`backend/walmart-quota-tools`。Console 页面复用 Console 登录，无需额度管理员密码。
 
-[Java 与 Console 迁移指南](docs/Console集成与Java迁移.md) 包含构建、部署、文件边界及调试记录。`18890` 保留为同一套 React 源码和 Java 后端的独立兼容入口。
+[Java 与 Console 迁移指南](Console集成与Java迁移.md) 包含构建、部署、文件边界及调试记录。`portal/` 独立前端已移除；Java 独立接口仍可用 `backend/walmart-quota/start-java` 启动。
 
 ## 规则
 
@@ -15,7 +15,7 @@
 4. 每个模型配置输入、输出每百万 Token 的人民币单价；Token 统计和人民币费用分开。未配置价格的模型拒绝调用，价格为 0 才表示显式免费。
 5. 周期沿用 14 天。个人配置、部门关系持久保存；临时加量到期失效。周期初始化不会重复赠送预算。
 
-部门关系由管理员在 Portal 维护。个人身份仍来自可信应用提供的 `x-codebuddy-user-id`，应用由 Key Auth 认证。不要将可任意伪造用户头的入口直接开放给不可信客户端；这里没有新增用户登录或 OIDC 映射。
+部门关系由管理员在 Console 维护。个人身份仍来自可信应用提供的 `x-codebuddy-user-id`，应用由 Key Auth 认证。不要将可任意伪造用户头的入口直接开放给不可信客户端；这里没有新增用户登录或 OIDC 映射。
 
 ## 操作
 
@@ -41,7 +41,7 @@ user-002,,L1
 
 导入会新增或更新个人配置，保留已消费和临时加量包，但替换基准档位。逐行生效，不是整批事务。结果显示每行成功/失败，支持只重试失败及未完成项、下载 JSON 结果与工单。同一弹窗内重试沿用原工单；请勿在处理中刷新页面。应用用量仍由模型请求产生，不导入统计数据。
 
-[导入调试记录](docs/批量导入调试.md)
+[导入调试记录](批量导入调试.md)
 
 ## 模拟环境
 
@@ -60,20 +60,19 @@ user-002,,L1
 
 ## 启动与复现
 
-Portal 部署、模拟服务、初始化和网关验收均已迁移为 Java CLI，完整安全迁移步骤见 [Java 工具指南](docs/java-tools.md)。下列 `prepare` / `install` 默认仅生成私密清单；首次部署需先构建并加载 Java tools 镜像，再明确加 `--apply`。已有临时 Redis Deployment 不允许直接覆盖，初始化数据也不会自动执行。
+部署、模拟服务、初始化和网关验收使用 Java CLI，完整安全迁移步骤见 [Java 工具指南](java-tools.md)。下列 `prepare` / `install` 默认仅生成私密清单；首次部署需先构建并加载 Java tools 镜像，再明确加 `--apply`。已有临时 Redis Deployment 不允许直接覆盖，初始化数据也不会自动执行。
 
-已有演示集群：按 [Java 工具指南](docs/java-tools.md) 执行 `migrate-fixtures`，保留现有 Redis。不要重新运行 seed 来“启动”项目。
+已有演示集群：按 [Java 工具指南](java-tools.md) 执行 `migrate-fixtures`，保留现有 Redis。不要重新运行 seed 来“启动”项目。
 
-独立兼容入口（在 `higress-console/portal` 执行，要求 Node >=22、Java 8+、Maven）：
+在 Console 仓库根目录构建与启动：
 
 ```bash
-npm ci
-npm run build
-mvn -f ../backend/walmart-quota/pom.xml package
-npm start
+npm --prefix frontend run build
+mvn -f backend/walmart-quota/pom.xml package
+backend/walmart-quota/start-java
 ```
 
-`npm start` 现在运行 Spring Boot JAR，并读取本目录私密 `.env`。Node 仅用于前端构建和浏览器测试。网关仍使用 `http://127.0.0.1:18080`；首次部署和插件构建见工具指南。
+独立 Java 服务读取 `.walmart-quota/.env`；Console 本身由原有启动流程运行。网关仍使用 `http://127.0.0.1:18080`；首次部署和插件构建见工具指南。
 
 金额账本前缀 `wmt_portal_money_v2:`，与旧 Token 账本 `wmt_portal_demo:` 隔离，没有将历史 Token 数字转换成人民币。
 
@@ -100,7 +99,7 @@ npm start
 | prices | GET/POST | 模型输入/输出单价，全量替换 |
 | audit | GET | 配置变更审计 |
 
-POST 必须带当前 period 和唯一 ticket_id。`operator`、内部结算金额和时间边界不可由客户端指定。具体请求示例见 [金额版实现与调试](docs/金额预算调试.md)。
+POST 必须带当前 period 和唯一 ticket_id。`operator`、内部结算金额和时间边界不可由客户端指定。具体请求示例见 [金额版实现与调试](金额预算调试.md)。
 
 ## 限制
 
@@ -110,4 +109,4 @@ POST 必须带当前 period 和唯一 ticket_id。`operator`、内部结算金�
 - 单值上限 9,999,999,999,999 微元/Token，独立 Redis，不支持 Redis Cluster 跨 slot。审计最近 10,000 条；历史清理需单独策略。
 - 页面列表有加载上限，完整数据可用分页 API 获取。
 
-新版验证保存在 [evidence-money](docs/evidence-money)，旧版验证保存在 [evidence](docs/evidence)，不要混用两版测试结果。
+新版验证保存在 [evidence-money](evidence-money)，旧版验证保存在 [evidence](evidence)，不要混用两版测试结果。

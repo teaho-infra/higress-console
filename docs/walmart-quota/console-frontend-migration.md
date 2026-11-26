@@ -1,3 +1,5 @@
+> 历史调试记录：独立 `portal/` 已移除，当前操作命令以 [README](README.md) 和 [Java 工具指南](java-tools.md) 为准。
+
 # Quota frontend integration
 
 The authoritative UI is now `frontend/src/custom/walmart-quota/`: components, API adapter, CSV import/money helpers, scoped styles, and menu metadata. `frontend/src/pages/walmart-quota/index.tsx` mounts the component into Console's existing React tree at `/walmart-quota`. The only edit to an existing Console source file is the menu import/entry in `frontend/src/pages/_defaultProps.tsx`.
@@ -16,6 +18,6 @@ Production requires the Java backend to expose those `/api/*` paths unchanged. C
 - `npm --prefix portal run build`: standalone Vite build passes using shared source.
 - `node --test portal/tests/import.test.mjs`: six CSV/import contract tests pass.
 - `node portal/tests/browser-console-migration.mjs`: Chromium smoke test against the built Console with intercepted synthetic API fixtures, covering independent quota login, CSV preview/import, string ID preservation, CSRF, CSS sibling isolation, and no page errors. Set `CONSOLE_TEST_URL` to the origin serving `frontend/build` with SPA fallback. This test makes no live gateway mutations.
-- `portal/docs/evidence/quota-console-migration.png`: actual Console shell with completed synthetic CSV import.
+- `docs/walmart-quota/evidence/quota-console-migration.png`: actual Console shell with completed synthetic CSV import.
 
 Build warnings about the existing direct webpack configuration, webpack deprecated API and outdated Browserslist data are unrelated to this migration. Real Java/gateway integration is validated separately by the integration task.

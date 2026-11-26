@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-set -eu
-PORTAL_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-if [ "$#" -eq 0 ]; then
-  exec java -jar "$PORTAL_ROOT/../backend/walmart-quota-tools/target/walmart-quota-tools-1.0.0.jar"
-fi
-exec java -jar "$PORTAL_ROOT/../backend/walmart-quota-tools/target/walmart-quota-tools-1.0.0.jar" "$@" --root "$PORTAL_ROOT"

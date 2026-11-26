@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -eu
+REPO_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
+if [ "$#" -eq 0 ]; then
+  exec java -jar "$REPO_ROOT/backend/walmart-quota-tools/target/walmart-quota-tools-1.0.0.jar"
+fi
+exec java -jar "$REPO_ROOT/backend/walmart-quota-tools/target/walmart-quota-tools-1.0.0.jar" "$@" --root "$REPO_ROOT"

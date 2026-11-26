@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseImport, makeJobs, runImport } from "../src/import.mjs";
+import { parseImport, makeJobs, runImport } from "../../src/custom/walmart-quota/import.mjs";
 const departments = new Set(["研发部", "部门,一"]);
 test("CSV preserves string IDs, BOM, reordered headers and quoted commas", () => {
   const rows = parseImport(

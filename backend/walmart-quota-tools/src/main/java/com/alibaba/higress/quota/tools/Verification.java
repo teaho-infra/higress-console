@@ -199,16 +199,16 @@ final class Verification {
             }
             report.put("passed", true);
         } finally {
-            Path wasm = t.root.resolve("../../higress/plugins/wasm-go/extensions/ai-quota-walmart/plugin.wasm")
+            Path wasm = t.root.resolve("../higress/plugins/wasm-go/extensions/ai-quota-walmart/plugin.wasm")
                     .normalize();
             if (Files.isRegularFile(wasm))
                 report.put("wasm_sha256", sha256(wasm));
             String text = JSON.writerWithDefaultPrettyPrinter().writeValueAsString(report);
             for (JsonNode secret : credentials)
                 text = text.replace(secret.asText(), "REDACTED");
-            Path file = t.root.resolve(command.equals("verify-money") ? "docs/evidence-money/gateway-report.json"
-                    : command.equals("verify-gateway") ? "docs/evidence/cluster-report.json"
-                            : "docs/evidence/" + command + "-report.json");
+            Path file = t.root.resolve(command.equals("verify-money") ? "docs/walmart-quota/evidence-money/gateway-report.json"
+                    : command.equals("verify-gateway") ? "docs/walmart-quota/evidence/cluster-report.json"
+                            : "docs/walmart-quota/evidence/" + command + "-report.json");
             save(file, text + "\n");
         }
     }

@@ -1,3 +1,5 @@
+> 历史调试记录：独立 `portal/` 已移除，当前操作命令以 [README](README.md) 和 [Java 工具指南](java-tools.md) 为准。
+
 # Console 原生子菜单
 
 入口：<http://127.0.0.1:18001/walmart-quota/overview>。
@@ -44,7 +46,7 @@ mvn -f backend/pom.xml -P walmart-quota \
 kubectl --context higress-dev -n higress-system set image deployment/higress-console \
   higress-console=higress-console/walmart-quota:20261125-menu-v2
 kubectl --context higress-dev -n higress-system rollout status deployment/higress-console
-cd portal
+cd /home/teaho/IdeaProjects/teaho-infra/higress-console
 node tests/browser-console-navigation.mjs
 CONSOLE_TEST_URL=http://127.0.0.1:18001 node tests/browser-console-migration.mjs
 ```

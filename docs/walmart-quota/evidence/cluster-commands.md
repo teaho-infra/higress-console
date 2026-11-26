@@ -4,11 +4,11 @@
 工作目录 `/home/teaho/IdeaProjects/teaho-infra/higress-console`。
 
 ```sh
-portal/scripts/quota-tools prepare
+backend/walmart-quota-tools/quota-tools prepare
 kubectl --context higress-dev -n higress-system rollout status deployment/walmart-quota-portal --timeout=60s
-portal/scripts/quota-tools install --wasm /home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/plugin.wasm
-portal/scripts/quota-tools verify-gateway --allow-mutations
-portal/scripts/quota-tools seed-legacy --allow-mutations
+backend/walmart-quota-tools/quota-tools install --wasm /home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/plugin.wasm
+backend/walmart-quota-tools/quota-tools verify-gateway --allow-mutations
+backend/walmart-quota-tools/quota-tools seed-legacy --allow-mutations
 ```
 
 首次 apply 后需要等待控制面传播（约 10 秒），再运行验收。`prepare` 写入独立 Deployment、Service、ConfigMap、Secret、两个 Ingress、四个官方插件；`install` 仅写入专属 WASM 插件。现存 Higress gateway/controller/Console 部署、镜像、JWT 路由、Minimax 路由、其他 Redis 未更改。网关为现有 2.2.4，使用现有本地 18080 转发。若转发关闭：
@@ -17,7 +17,7 @@ portal/scripts/quota-tools seed-legacy --allow-mutations
 kubectl --context higress-dev -n higress-system port-forward service/higress-gateway 18080:80
 ```
 
-所有资源名以 `walmart-quota-portal` 开头，主机为 `quota-portal.local`。模型为本地 Python 模拟服务，每次真实 HTTP 请求返回 usage=30（10 输入、20 输出），支持 JSON/SSE 和 chunked 请求。没有付费模型调用。独立 Redis 有随机密码，演示数据未开启持久化。私密部署 JSON/Key 放在 `portal/.debug/cluster/`，BFF `.env` 为 0600。请勿提交这些文件。
+所有资源名以 `walmart-quota-portal` 开头，主机为 `quota-portal.local`。模型为本地 Python 模拟服务，每次真实 HTTP 请求返回 usage=30（10 输入、20 输出），支持 JSON/SSE 和 chunked 请求。没有付费模型调用。独立 Redis 有随机密码，演示数据未开启持久化。私密部署 JSON/Key 放在 `.walmart-quota/.debug/cluster/`，BFF `.env` 为 0600。请勿提交这些文件。
 
 标准链为 transformer(AUTHN410，移除客户端 x-mse-consumer) → KeyAuth(AUTHN310，可信应用身份) → ai-statistics900 → ai-quota-walmart750 → ai-token-ratelimit600（仅 /limited 路由）。主路由 `/v1/chat/completions` 以及其 `/quota` 管理子路径；窗口测试路由 `/limited/v1/chat/completions`。KeyAuth 仅接受 x-api-key 请求头；密钥在转发上游前剥离。`x-codebuddy-user-id` 是可信应用提供的用户标识，演示没有独立用户身份认证；不应直接暴露给不可信公共客户端。
 
