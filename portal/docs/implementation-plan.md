@@ -31,3 +31,6 @@
 - POST /delta {dimension,subject,value,ticket_id,period}：本周期加量或扣减，整数。
 - POST /refresh {dimension,subject,ticket_id,period}：幂等初始化当前周期，不回赠已消费余额。
 - POST /tiers {tiers,ticket_id,period}：修改档位模板；必须定义现有账户影响并有审计（实现前协调）。
+# 历史实现计划（已被新额度规则取代）
+
+> 本文保留初版实现记录。当前规则见 [金额预算调试](金额预算调试.md)：仅 L1=500 元和 L2=1500 元；不再支持 L3 或周期内升档，项目临时额度使用经审批的单次 2000 元加量包。

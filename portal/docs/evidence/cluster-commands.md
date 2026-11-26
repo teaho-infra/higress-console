@@ -1,13 +1,14 @@
+<!-- Portal deployment/verification commands migrated to Java; historical external plugin Python tests below are unchanged. -->
 # 独立网关集成验证
 
 工作目录 `/home/teaho/IdeaProjects/teaho-infra/higress-console`。
 
 ```sh
-python3 portal/scripts/deploy_demo.py prepare
+portal/scripts/quota-tools prepare
 kubectl --context higress-dev -n higress-system rollout status deployment/walmart-quota-portal --timeout=60s
-python3 portal/scripts/deploy_demo.py install --wasm /home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/plugin.wasm
-python3 portal/scripts/verify_gateway.py
-python3 portal/scripts/seed_demo.py
+portal/scripts/quota-tools install --wasm /home/teaho/IdeaProjects/teaho-infra/higress/plugins/wasm-go/extensions/ai-quota-walmart/plugin.wasm
+portal/scripts/quota-tools verify-gateway --allow-mutations
+portal/scripts/quota-tools seed-legacy --allow-mutations
 ```
 
 首次 apply 后需要等待控制面传播（约 10 秒），再运行验收。`prepare` 写入独立 Deployment、Service、ConfigMap、Secret、两个 Ingress、四个官方插件；`install` 仅写入专属 WASM 插件。现存 Higress gateway/controller/Console 部署、镜像、JWT 路由、Minimax 路由、其他 Redis 未更改。网关为现有 2.2.4，使用现有本地 18080 转发。若转发关闭：
@@ -20,7 +21,7 @@ kubectl --context higress-dev -n higress-system port-forward service/higress-gat
 
 标准链为 transformer(AUTHN410，移除客户端 x-mse-consumer) → KeyAuth(AUTHN310，可信应用身份) → ai-statistics900 → ai-quota-walmart750 → ai-token-ratelimit600（仅 /limited 路由）。主路由 `/v1/chat/completions` 以及其 `/quota` 管理子路径；窗口测试路由 `/limited/v1/chat/completions`。KeyAuth 仅接受 x-api-key 请求头；密钥在转发上游前剥离。`x-codebuddy-user-id` 是可信应用提供的用户标识，演示没有独立用户身份认证；不应直接暴露给不可信公共客户端。
 
-`cluster-report.json` 是实际网关请求的脱敏机器证据，包括 Redis 暂停 3.5 秒时 503 失败关闭和恢复。验证只清理专属 Redis 中的窗口键，不清理额度账本。随机测试用户避免覆盖其他测试；固定演示用户 user-alice、user-bob、user-carol 来自 seed_demo.py，分别 L2/L1/L3，每次种子运行发送 3 次真实模拟请求。应用为 demo-app 和 second-app。
+`cluster-report.json` 是实际网关请求的脱敏机器证据，包括 Redis 暂停 3.5 秒时 503 失败关闭和恢复。验证只清理专属 Redis 中的窗口键，不清理额度账本。随机测试用户避免覆盖其他测试；固定演示用户 user-alice、user-bob、user-carol 来自 seed-legacy，分别 L2/L1/L3，每次种子运行发送 3 次真实模拟请求。应用为 demo-app 和 second-app。
 
 调试修正：首次安装立即验证时插件尚未传播，因此管理请求曾到达 mock；等待传播后正常。模型最初仅读取 Content-Length，无法读取 WASM buffer 后转发的 chunked 请求，已修正。一次 query-key 负例用了有效应用 key，随后立即轮换该 key，负例改为无效占位值；管理 key 不曾输出。
 
